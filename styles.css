@@ -1,0 +1,31 @@
+a:link {
+  color: rgb(255,255,255);
+  text-decoration: none;
+}
+a:visited {
+  color: rgb(0,0,0);
+}
+a:hover{
+  text-decoration: underline;
+}
+p.tickers{
+  display: inline;
+  background-color: rgb(0,0,0);
+  border: 1px solid #;
+}
+p.spacers{
+  display: inline;
+}
+body {
+  font-family: Arial, Verdana, sans-serifl;
+  background-color: #414141;
+  text-align: center;}
+h1,h2 {
+  background-color: rgb(11,64,26);
+  color: rgb(255, 255, 255);
+  padding: 10px;}
+p {
+  color: rgb(255, 255, 255);}
+dl{
+  color: rgb(200, 200, 200);
+}
