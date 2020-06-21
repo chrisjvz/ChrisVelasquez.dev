@@ -1,49 +1,105 @@
 <!DOCTYPE html>
-  <!-- Comment Syntax-->
-  <link href="styles.css" type ="text/css" rel = "stylesheet">
+<html lang="en">
   <head>
-    <title>What is Chris up to?</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Christian Velasquez</title>
+    <link href="main.css" type="text/css" rel="stylesheet">
   </head>
   <body>
-    <h1 id ="top"> Christian Velasquez, ECE CE Major @ UCSD </h1>
-    <img src="images/ucsdJacobs.jpg" alt = "UCSD's Jacobs School of Engineering"
-      title = "UCSD's Jacobs School of Engineering, home to several STEM departments">
-      <p>
-        I like to showcase what I've been working on or been
-        interested in lately here!</p>
-      <p>
-        <a href = "http://ece.ucsd.edu/undergraduate/computer-engineering-major" target = "_blank">
-           UCSD Computer Engineering Requirements (opens in a new window)</a></p>
-    <hr />
-    <h2>Spring 2020 Class Schedule</h2>
-    <p class = "tickers"><b> CSE 12 </b></p>
-    <p class = "tickers"><b> CSE 15L </b></p>
-    <p class = "tickers"><b> MATH 20A </b></p>
-    <p class = "tickers"><b> POLI103A </b></p>
-      <dl>
-        <dt><strong><abbr title = "Basic Data Structures and Object-Oriented Design">CSE 12:</abbr></strong></dt>
-          <dd>
-            Use and implementation of basic data structures including linked lists,
-            stacks, and queues. Use of advanced structures such as binary trees and hash tables.
-            Object-oriented design including interfaces, polymorphism, encapsulation, abstract data types,
-            pre-/post-conditions. Recursion. Uses Java and Java Collections. </dd>
-        <dt><strong><abbr title = "Software Tools and Techniques Laboratory">CSE 15L:</abbr></strong></dt>
-          <dd>
-            Hands-on exploration of software development tools and techniques.
-            Investigation of the scientific process as applied to software development
-            and debugging. Emphasis is on weekly hands-on laboratory experiences,
-            development of laboratory notebooking techniques as applied to software design.</dd>
-        <dt><strong><abbr title = "Calculus for Science and Engineering">MATH 20A:</abbr></strong></dt>
-          <dd>
-            Foundations of differential and integral calculus of one variable.
-            Functions, graphs, continuity, limits, derivative, tangent line.
-            Applications with algebraic, exponential, logarithmic, and trigonometric
-            functions. Introduction to the integral.</dd>
+    <div class="container">
+      <header>
+        <a href="https://github.com/AmnesiacSloth/ChrisVelasquez.com">
+          <img src="Images/slothIcon.png" alt="Ralf Designs @ pixabay" class="logo">
+          <nav>
+            <a href="#" class="hide-desktop">
+              <img src="Images/ham.png" alt="toggle menu" class="menu" id="menu">
+            </a>
+            <ul class="show-desktop hide-mobile" id="nav">
+              <li id="exit" class="exit-btn hide-desktop">
+                <img src="Images/exit.svg" alt="exit menu"> </li>
+              <li><a href="#" class="buttons"><span>Interests</span></a> </li>
+              <li><a href="#" class="buttons"><span>Resume</span></a></li>
+              <li><a href="#" class="buttons"><span>Projects</span></a></li>
+              <li><a href="#" class="buttons"><span>Home</span></a></li>
+            </ul>
+          </nav>
+        </a>
+      </header>
+      <section>
+        <img src="Images/costaportrait.jpg" alt="portrait" class="portrait">
+        <h1>Christian Velasquez</h1>
+        <p class="subhead">Hey there! I'm Chris, a undergraduate student at
+          UC San Diego pursing a B.S in Computer Engineering. I've been crazy about computers
+          ever since I saved up enough for a custom pc in 2013. The field of computer engineering has
+          limitless applications in today's world and I'd like to one day contribute to our technological advancement!
+           Feel free to look around my site and get to know me a little better!</p>
+           <img src="Images/downarrow.svg" alt="scroll down" class="scroll hide-mobile show-desktop">
+      </section>
+    </div>
+    <div class="color-container">
+      <div class="container">
+        <ul>
+          <li> <img src="Images/projects.svg" alt="Projects Icon">
+            <p> My projects range from discord bots, microcontroller management
+               and frontend design such as this website!
+              Interested? Click the icon to read more!</p>
+          </li>
+          <li> <img src="Images/resume.svg" alt="Resume Icon">
+            <p> Currently seeking volunteer work or internships in software
+              or hardware! Know anyone who's looking for some help? Click above
+               to download my resume!</p>
+          </li>
+          <li> <img src="Images/interests.svg" alt="Interests Icon" >
+            <p> I'm very passionate about other things besides Computer
+              Engineering! Want to hear more about my interests and what
+              I like to do with my spare time?</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="social-container">
+      <div class="container">
+      <ul>
+        <li>
+          <a href="https://github.com/AmnesiacSloth">
+          <img src="Images/github.svg" alt="github icon" class="socials"></a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/christian-velasquez-b6819a1a5/">
+          <img src="Images/LinkedIn.svg" alt="LinkedIn icon" class="socials"></a>
+        </li>
+        <li>
+          <a href="mailto:cjvelasq@ucsd.edu" title="cjvelasq@ucsd.edu" target="_blank">
+          <img src="Images/email.svg" alt="Email icon" class="socials"></a>
+        </li>
+        <li>
+          <a href="https://www.reddit.com/user/AmnesiacSloth/">
+          <img src="Images/reddit.svg" alt="reddit icon" class="socials"></a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/chris.rar/?hl=en">
+          <img src="Images/instagram.svg" alt="insta icon" class="socials"></a>
+        </li>
+      </ul>
+      </div>
+    </div>
 
-    <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=bG1vMTBsZHQ5M2FoOWlwZmkydDE3bDN1ZmNAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%238E24AA&amp;color=%237986CB&amp;title=Schedule&amp;mode=WEEK&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=1&amp;showTz=1&amp;showNav=1&amp;showDate=1" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-    <hr />
-    <a href = "volleyball.html">Volleyball</a>
-    <p></p>
-    <a href = "mailto:chris.Velasquez511@gmail.com"> Email me! </a>
+    <script type="text/javascript">
+      var menu = document.getElementById('menu');
+      var nav = document.getElementById('nav');
+      var exit = document.getElementById('exit');
+
+      menu.addEventListener('click',function(e) {
+        nav.classList.toggle('hide-mobile');
+        e.preventDefault();
+      });
+
+      exit.addEventListener('click',function(e) {
+        nav.classList.add('hide-mobile');
+        e.preventDefault();
+      })
+    </script>
   </body>
 </html>
