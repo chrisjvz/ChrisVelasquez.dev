@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Winter Quarter 21</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body>
+    <div id="search">
+        <input id="search-field" type="text" name="search-field" onkeypress="return search(event)"/>
+    </div>
+    <div class="container">
+        <div id="clock"></div>
+        <div class="weather-container">
+            <div class="row">
+                <div id="weather-description"class="inline"></div>
+                <div class="inline">-</div>
+                <div id="temp" class="inline"></div>
+            </div>
+        </div>
+        <div class="bookmark-container">
+            <div class="bookmark-set">
+                <div class="bookmark-title">CSE 21</div>
+                <div class="bookmark-inner-container">
+                  <a class="bookmark" href="https://piazza.com/class/kjis7roaoi72v6" target="_self">Piazza</a>
+                  <a class="bookmark" href="https://canvas.ucsd.edu/courses/21790" target="_self">Canvas</a>
+                  <a class="bookmark" href="https://www.gradescope.com/courses/221344" target="_self">Gradescope</a>
+                  <a class="bookmark" href="file:///C:/Users/cjvelasq/Desktop/School/Winter%2021/CSE%2021/CSE%2020%20Textbook%20(8th%20Edition).pdf" target="_self">Textbook</a>
+                  <a class="bookmark" href="TODO" target="_self">IDK</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+                <div class="bookmark-title">Physics 2A</div>
+                <div class="bookmark-inner-container">
+          <a class="bookmark" href="https://ameyertholen.physics.ucsd.edu/phys2a/" target="_self">Calendar of Assignments</a>
+          <a class="bookmark" href="https://canvas.ucsd.edu/courses/22690" target="_self">Canvas</a>
+          <a class="bookmark" href="https://etext-ise.pearson.com/courses/meyertholen35322/products/1TNPUMO5AF9/pages/acc37bd7bc63cca145698495cb34e47e14cab4408?locale=&key=231101737422212428052021&iesCode=haslibirhw" target="_self">Textbook</a>
+          <a class="bookmark" href="https://openvellum.ecollege.com/course.html?courseId=16505883&OpenVellumHMAC=0b2a74909c18662f7dd7e82d6ef024b2#10001" target="_self">Homework</a>
+					<a class="bookmark" href="https://piazza.com/class/kjix0tl8ild4vt" target="_self">Piazza</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+            <div class="bookmark-title">TDMV 138</div>
+                <div class="bookmark-inner-container">
+					             <a class="bookmark" href="" target="_self">Zoom</a>
+                       <a class="bookmark" href="https://canvas.ucsd.edu/courses/23209" target="_self">Canvas</a>
+					             <a class="bookmark" href="" target="_self">Dead Link</a>
+                       <a class="bookmark" href="TODO" target="_self">Dead Link</a>
+                       <a class="bookmark" href="" target="_self">Dead Link</a>
+                       <a class="bookmark" href="" target="_self">Dead Link</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+                <div class="bookmark-title">Projects</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="TODO" target="_self">Website</a>
+                    <a class="bookmark" href="TODO" target="_self">Magic Mirror</a>
+                    <a class="bookmark" href="TODO" target="_self">Arduino</a>
+                    <a class="bookmark" href="https://www.notion.so/Weekly-Agenda-dce75b4dbecd46d8950cff6e272495b5" target="_self">Notion Weekly Checklist</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Search on enter key event
+        function search(e) {
+            if (e.keyCode == 13) {
+                var val = document.getElementById("search-field").value;
+                window.open("https://google.com/search?q=" + val);
+            }
+        }
+        // Get current time and format
+        function getTime() {
+            let date = new Date(),
+                min = date.getMinutes(),
+                sec = date.getSeconds(),
+                hour = date.getHours();
+
+            return "" +
+                (hour < 10 ? ("0" + hour) : hour) + ":" +
+                (min < 10 ? ("0" + min) : min) + ":" +
+                (sec < 10 ? ("0" + sec) : sec);
+        }
+
+        window.onload = () => {
+            let xhr = new XMLHttpRequest();
+            // Request to open weather map
+            xhr.open('GET', 'http://api.openweathermap.org/data/2.5/weather?id=5352963&units=imperial&appid=e5b292ae2f9dae5f29e11499c2d82ece');
+            xhr.onload = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let json = JSON.parse(xhr.responseText);
+                        console.log(json);
+                        document.getElementById("temp").innerHTML = json.main.temp.toFixed(0) + " F";
+                        document.getElementById("weather-description").innerHTML = json.weather[0].description;
+                    } else {
+                        console.log('error msg: ' + xhr.status);
+                    }
+                }
+            }
+            xhr.send();
+            // Set up the clock
+            document.getElementById("clock").innerHTML = getTime();
+            // Set clock interval to tick clock
+            setInterval( () => {
+                document.getElementById("clock").innerHTML = getTime();
+            },100);
+        }
+
+        document.addEventListener("keydown", event => {
+            if (event.keyCode == 32) {          // Spacebar code to open search
+                document.getElementById('search').style.display = 'flex';
+                document.getElementById('search-field').focus();
+            } else if (event.keyCode == 27) {   // Esc to close search
+                document.getElementById('search-field').value = '';
+                document.getElementById('search-field').blur();
+                document.getElementById('search').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

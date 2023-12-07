@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body>
+    <div id="search">
+        <input id="search-field" type="text" name="search-field" onkeypress="return search(event)"/>
+    </div>
+      <button class="quarterButton"><a class="onclick" href="file:///C:/Users/cjvelasq/Documents/Homepage/Studying.html">Current Classes</a></button>
+    <div class="container">
+        <div id="clock"></div>
+        <div class="weather-container">
+            <div class="row">
+                <div id="weather-description"class="inline"></div>
+                <div class="inline">-</div>
+                <div id="temp" class="inline"></div>
+            </div>
+        </div>
+        <div class="bookmark-container">
+            <div class="bookmark-set">
+                <div class="bookmark-title">Daily</div>
+                <div class="bookmark-inner-container">
+                  <a class="bookmark" href="https://mail.google.com/mail/u/1/#inbox" target="_self">UCSD Gmail</a>
+        					<a class="bookmark" href="https://canvas.ucsd.edu/" target="_self">Canvas</a>
+                  <a class="bookmark" href="https://piazza.com/class/k85duuui5pp3y9#" target="_self">Piazza</a>
+        					<a class="bookmark" href="https://www.gradescope.com/" target="_self">Gradescope</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+                <div class="bookmark-title">Media</div>
+                <div class="bookmark-inner-container">
+          <a class="bookmark" href="https://youtube.com" target="_self">Youtube</a>
+          <a class="bookmark" href="https://music.youtube.com" target="_self">Youtube Music</a>
+          <a class="bookmark" href="https://play.google.com/music/listen#/home" target="_self">Google Music</a>
+					<a class="bookmark" href="http://nba4live.xyz/" target="_self">NBA Streams</a>
+					<a class="bookmark" href="https://www.cnn.com" target="_self">CNN</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+            <div class="bookmark-title">Reddit</div>
+                <div class="bookmark-inner-container">
+					<a class="bookmark" href="https://www.reddit.com/r/UCSD/" target="_self">/r/UCSD</a>
+                    <a class="bookmark" href="https://www.reddit.com/r/pcmasterrace/" target="_self">/r/PCMR</a>
+					<a class="bookmark" href="https://old.reddit.com/r/AskReddit/" target="_self">/r/AskReddit</a>
+                    <a class="bookmark" href="https://old.reddit.com/r/EngineeringStudents/" target="_self">/r/EngineeringStudents</a>
+					<a class="bookmark" href="https://www.reddit.com/r/wallstreetbets/" target="_self">/r/WallStreetBets</a>
+                    <a class="bookmark" href="https://old.reddit.com/r/lakers/" target="_self">/r/Lakers</a>
+					<a class="bookmark" href="https://old.reddit.com/r/NBA/" target="_self">/r/NBA</a>
+                </div>
+            </div>
+            <div class="bookmark-set">
+                <div class="bookmark-title">Bookmarks</div>
+                <div class="bookmark-inner-container">
+                    <a class="bookmark" href="https://www.chase.com/" target="_self">Chase</a>
+                    <a class="bookmark" href="file:///C:/Users/Chris/Documents/The%20Inner%20Game%20of%20Tennis.pdf" target="_self">IGOT</a>
+                    <a class="bookmark" href="https://www.investopedia.com/" target="_self">Investopedia</a>
+                    <a class="bookmark" href="file:///C:/Users/cjvelasq/Desktop/ChrisVelasquez.com/index.html" target="_self">Website</a>
+                    <a class="bookmark" href="https://www.linkedin.com/in/christian-velasquez-b6819a1a5/" targer="_self">LinkedIn</a>
+                    <a class="bookmark" href="https://github.com/AmnesiacSloth" targer="_self">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Search on enter key event
+        function search(e) {
+            if (e.keyCode == 13) {
+                var val = document.getElementById("search-field").value;
+                window.open("https://google.com/search?q=" + val);
+            }
+        }
+        // Get current time and format
+        function getTime() {
+            let date = new Date(),
+                min = date.getMinutes(),
+                sec = date.getSeconds(),
+                hour = date.getHours();
+
+            return "" +
+                (hour < 10 ? ("0" + hour) : hour) + ":" +
+                (min < 10 ? ("0" + min) : min) + ":" +
+                (sec < 10 ? ("0" + sec) : sec);
+        }
+
+        window.onload = () => {
+            let xhr = new XMLHttpRequest();
+            // Request to open weather map
+            xhr.open('GET', 'http://api.openweathermap.org/data/2.5/weather?id=5352963&units=imperial&appid=e5b292ae2f9dae5f29e11499c2d82ece');
+            xhr.onload = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let json = JSON.parse(xhr.responseText);
+                        console.log(json);
+                        document.getElementById("temp").innerHTML = json.main.temp.toFixed(0) + " F";
+                        document.getElementById("weather-description").innerHTML = json.weather[0].description;
+                    } else {
+                        console.log('error msg: ' + xhr.status);
+                    }
+                }
+            }
+            xhr.send();
+            // Set up the clock
+            document.getElementById("clock").innerHTML = getTime();
+            // Set clock interval to tick clock
+            setInterval( () => {
+                document.getElementById("clock").innerHTML = getTime();
+            },100);
+        }
+
+        document.addEventListener("keydown", event => {
+            if (event.keyCode == 32) {          // Spacebar code to open search
+                document.getElementById('search').style.display = 'flex';
+                document.getElementById('search-field').focus();
+            } else if (event.keyCode == 27) {   // Esc to close search
+                document.getElementById('search-field').value = '';
+                document.getElementById('search-field').blur();
+                document.getElementById('search').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
