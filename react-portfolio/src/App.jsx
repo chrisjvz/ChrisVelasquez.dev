@@ -1,4 +1,5 @@
 import Welcome from './components/Welcome.jsx'
+import AboutMe from './components/Aboutme.jsx'
 import { useState } from 'react'
 import './App.css'
 
@@ -22,9 +23,10 @@ function App() {
  * */
 function Content() {
   return (
-    <div className="grid-cols-4">
+    <main className="grid grid-rows-4 grid-cols-4">
       <Welcome />
-    </div >
+      <AboutMe />
+    </main >
   )
 }
 

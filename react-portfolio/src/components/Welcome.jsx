@@ -8,7 +8,7 @@ import YoutubeIcon from "../assets/svgs/youtube-icon.svg?react"
 function Welcome() {
   return (
     // controls entire widget in encompasing main
-    <div className="col-span-3 ">
+    <div className="col-span-3 row-span-4 ">
       <div className="flex w-full h-full ">
         <div className="flex flex-col justify-between md:max-w-[400px]">
           <div>
@@ -38,7 +38,7 @@ function Welcome() {
 
           </div>
         </div>
-        <img src={hobbes} width="345" height="350"></img>
+        <img src={hobbes} className="max-h-[300px] w-auto "></img>
       </div>
     </div>
   );
