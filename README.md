@@ -11,13 +11,18 @@ This site uses the following tools and technologies
 * Vite
 * React
 * Tailwind CSS
+* Chafa
 
+### Chafa 
+Cool cli tool that generates text-based art from images
+<!-- TODO: Need to explain this line and args --> 
+`chafa -f symbols -s 300x300 -c 240 -w 9 <imgpath>`
 ## Todo List
 
-* [ ] Create nice file structure for assets 
-* [ ] Style 1 component
-* [ ] Break up UI into components
-* [ ] Design site
+* [x] Create nice file structure for assets 
+* [x] Style 1 component
+* [x] Break up UI into components
+* [x] Design site
 * [ ] Attach Resume / contacts
 * [ ] Deploy 
 
