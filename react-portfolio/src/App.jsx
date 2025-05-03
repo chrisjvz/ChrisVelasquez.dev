@@ -1,30 +1,30 @@
-import './components/Welcome.jsx'
+import Welcome from './components/Welcome.jsx'
 import { useState } from 'react'
 import './App.css'
 
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  // Top level div just defines a immoveable background that matches the entire viewport 
+  // screen no matter the size
   return (
     <>
-      <body class="bg-gradient-to-b from-emerald-950 bg-zinc-900 ">
+      <div className="fixed inset-0 min-h-screen bg-gradient-to-b from-emerald-950 bg-zinc-900">
         <Content />
-      </body>
-
-      <p> hello </p>
+      </div>
     </>
   )
 }
 
 /*
- * General container that holds all grid boxes
+ * Overarching site container styled as a grid container with 4 cols
+ *
+ * TODO: Add media query with tailwind?
  * */
 function Content() {
   return (
-    <main>
-
-    </main>
+    <div className="grid-cols-4">
+      <Welcome />
+    </div >
   )
 }
 
