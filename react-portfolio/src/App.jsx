@@ -28,7 +28,7 @@ function App() {
  * */
 function Content() {
   return (
-    <main className="grid grid-rows-4 grid-cols-4 max-w-screen max-h-screen">
+    <main className="grid grid-rows-4 grid-cols-4 max-w-screen h-dvh">
       <Welcome />
       <AboutMe />
       <ContactMe />
