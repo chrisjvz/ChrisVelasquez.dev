@@ -8,9 +8,9 @@ import YoutubeIcon from "../assets/svgs/youtube-icon.svg?react"
 function Welcome() {
   return (
     // controls entire widget in encompasing main
-    <div className="col-span-3 row-span-4 ">
-      <div className="flex w-full h-full ">
-        <div className="flex flex-col justify-between md:max-w-[400px]">
+    <div className="col-span-3 row-span-2 ">
+      <div className="flex w-full h-full justify-around">
+        <div className="flex flex-col md:max-w-[400px]">
           <div>
             {
               // Holds inner text blob and widgets

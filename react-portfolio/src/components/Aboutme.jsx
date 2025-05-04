@@ -1,7 +1,7 @@
 function AboutMe() {
   /* TODO: Tailwind css here for styling */
   return (
-    <div className="col-span-1 row-span-4">
+    <div className="col-span-1 row-span-2">
       <div className="flex w-full h-full flex-col">
         <h1> About me </h1>
         <p>

@@ -1,5 +1,10 @@
 import Welcome from './components/Welcome.jsx'
 import AboutMe from './components/Aboutme.jsx'
+import ContactMe from './components/Contact.jsx'
+import ResumeViewer from './components/Resumeviewer.jsx'
+import ThemeChanger from './components/Themechanger.jsx'
+import ProjectViewer from './components/Projectviewer.jsx'
+
 import { useState } from 'react'
 import './App.css'
 
@@ -9,7 +14,7 @@ function App() {
   // screen no matter the size
   return (
     <>
-      <div className="fixed inset-0 min-h-screen bg-gradient-to-b from-emerald-950 bg-zinc-900">
+      <div className="fixed inset-0 w-screen h-screen bg-gradient-to-b from-emerald-950 bg-zinc-900">
         <Content />
       </div>
     </>
@@ -23,9 +28,14 @@ function App() {
  * */
 function Content() {
   return (
-    <main className="grid grid-rows-4 grid-cols-4">
+    <main className="grid grid-rows-4 grid-cols-4 max-w-screen max-h-screen">
       <Welcome />
       <AboutMe />
+      <ContactMe />
+      <ResumeViewer />
+      <ThemeChanger />
+      <ProjectViewer />
+      <ProjectViewer />
     </main >
   )
 }
