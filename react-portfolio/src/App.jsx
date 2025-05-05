@@ -4,6 +4,10 @@ import ContactMe from './components/Contact.jsx'
 import ResumeViewer from './components/Resumeviewer.jsx'
 import ThemeChanger from './components/Themechanger.jsx'
 import ProjectViewer from './components/Projectviewer.jsx'
+import Credits from './components/Credits.jsx'
+import LocalTime from './components/LocalTime.jsx'
+import TechScrollable from './components/Techscrollable.jsx'
+
 
 import { useState } from 'react'
 import './App.css'
@@ -36,6 +40,9 @@ function Content() {
       <ThemeChanger />
       <ProjectViewer />
       <ProjectViewer />
+      <TechScrollable />
+      <LocalTime />
+      <Credits />
     </main >
   )
 }

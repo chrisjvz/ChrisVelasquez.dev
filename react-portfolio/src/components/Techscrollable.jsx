@@ -1,0 +1,34 @@
+// Basically saves me a ton of lines of import statements
+const globImportTechSvgs = import.meta.glob('../assets/scrollables/*.svg', {
+  query: '?react',
+  eager: true
+})
+// Extract only the functions from the imported stuff
+const loadedIcons = Object.values(globImportTechSvgs);
+// NOTE: Shoutout https://cruip.com/create-an-infinite-horizontal-scroll-animation-with-tailwind-css/
+
+
+/*
+ * TODO: Reorder the svg files to be kinda in groups of focuses
+ * Clean up / add gradient effect to the edges?
+ * */
+function TechScrollable() {
+  return (
+    <div className="col-span-1 row-span-1 border-2 border-amber-300 w-full inline-flex flex-nowrap overflow-hidden">
+      Couple things Ive messed with
+      <ul className="flex items-center justify-start animate-infinite-scroll">
+        {/* Make the array twice as long then create the list items 
+        */}
+        {loadedIcons.concat(loadedIcons).map((Icon, index) => (
+          <li key={index} className="mx-4">
+            {console.log(Icon.default.name)}
+            <Icon.default className="w-12 h-12" />
+          </li>
+        ))}
+      </ul>
+
+    </div>
+  );
+}
+
+export default TechScrollable
