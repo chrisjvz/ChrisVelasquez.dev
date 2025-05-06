@@ -12,7 +12,20 @@ import TechScrollable from './components/Techscrollable.jsx'
 import { useState } from 'react'
 import './App.css'
 
+// HACK: Testing code
 
+import mcu from "./assets/stm32.jpg"
+import dsgas from "./assets/gasdatascience.jpg"
+
+//TODO : FIX naming conventions here, possibly move to new file and fix assets
+const projectlinks = {
+  portfoliowebsite: ["https://github.com/AmnesiacSloth/ChrisVelasquez.dev", dsgas],
+  httpserver: "https://github.com/AmnesiacSloth/httpserver",
+  jccprocessor: "https://github.com/AmnesiacSloth/CPU-Design",
+  bingobongo: "https://github.com/AmnesiacSloth/BingoBongo",
+  dimes: "https://github.com/AmnesiacSloth/Dimes",
+  stm32BLE: ["https://github.com/cse-190e-fall-2023/youlostit-project-1-blinkenlights-32-bit-monstas", mcu]
+}
 function App() {
   // Top level div just defines a immoveable background that matches the entire viewport 
   // screen no matter the size
@@ -38,8 +51,8 @@ function Content() {
       <ContactMe />
       <ResumeViewer />
       <ThemeChanger />
-      <ProjectViewer />
-      <ProjectViewer />
+      <ProjectViewer background={projectlinks.portfoliowebsite[1]} projectlink={projectlinks.portfoliowebsite[0]} />
+      <ProjectViewer background={projectlinks.stm32BLE[1]} projectlink={projectlinks.stm32BLE[0]} />
       <TechScrollable />
       <LocalTime />
       <Credits />
