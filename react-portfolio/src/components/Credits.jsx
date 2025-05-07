@@ -1,7 +1,7 @@
 
 function Credits() {
   return (
-    <div className="col-span-1 row-span-1 ">
+    <div className="card">
       <p>
         © 2025 · Crafted with ❤️ using
         <a href="https://react.dev/" target="_blank"> React </a>

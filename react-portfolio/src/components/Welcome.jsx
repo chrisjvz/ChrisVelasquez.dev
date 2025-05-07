@@ -8,7 +8,7 @@ import YoutubeIcon from "../assets/svgs/youtube-icon.svg?react"
 function Welcome() {
   return (
     // controls entire widget in encompasing main
-    <div className="col-span-3 row-span-2 ">
+    <div className="card">
       <div className="flex w-full h-full justify-around">
         <div className="flex flex-col md:max-w-[400px]">
           <div>

@@ -10,7 +10,6 @@ import TechScrollable from './components/Techscrollable.jsx'
 
 
 import { useState } from 'react'
-import './App.css'
 
 // HACK: Testing code
 
@@ -31,9 +30,8 @@ function App() {
   // screen no matter the size
   return (
     <>
-      <div className="fixed inset-0 w-screen h-screen bg-gradient-to-b from-emerald-950 bg-zinc-900">
-        <Content />
-      </div>
+      <div className="bg-linear-to-b bg-amber-300"></div>
+      <Content />
     </>
   )
 }
@@ -43,9 +41,10 @@ function App() {
  *
  * TODO: Add media query with tailwind?
  * */
+
 function Content() {
   return (
-    <main className="grid grid-rows-4 grid-cols-4 max-w-screen h-dvh">
+    <main className="grid overflow-hidden m-auto p-1 gap-1 lg:grid-rows-4 lg:grid-cols-8 ">
       <Welcome />
       <AboutMe />
       <ContactMe />

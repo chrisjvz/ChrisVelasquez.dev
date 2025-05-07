@@ -1,7 +1,7 @@
 
 function Contactme() {
   return (
-    <div className="col-span-1 row-span-1">
+    <div className="card">
       <div className="flex w-full h-full flex-col" >
         <h1> Let's start working together! </h1>
         <h6> Contact Details </h6>
