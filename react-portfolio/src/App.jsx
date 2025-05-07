@@ -26,11 +26,11 @@ const projectlinks = {
   stm32BLE: ["https://github.com/cse-190e-fall-2023/youlostit-project-1-blinkenlights-32-bit-monstas", mcu]
 }
 function App() {
-  // Top level div just defines a immoveable background that matches the entire viewport 
+  // Top level div just defines a fixed background that matches the entire viewport 
   // screen no matter the size
   return (
     <>
-      <div className="bg-linear-to-b bg-amber-300"></div>
+      <div className="fixed inset-0 -z-50 flex bg-emerald-950 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"> </div>
       <Content />
     </>
   )
