@@ -4,7 +4,7 @@ function ResumeViewer() {
   return (
     <div className=" card border-2 ">
       <a href={resume} className="flex w-full h-full" target="_blank">
-        <img src={resImg} className=" opacity-60 transition-opacity duration-150 hover:opacity-100"></img>
+        <img src={resImg} className="size-full opacity-60 transition-opacity duration-150 hover:opacity-100"></img>
       </a>
     </div>
   );

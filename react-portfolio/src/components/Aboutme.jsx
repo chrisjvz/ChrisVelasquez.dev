@@ -1,7 +1,7 @@
 function AboutMe() {
   /* TODO: Tailwind css here for styling */
   return (
-    <div className="card">
+    <div className="card md:row-span-6 ">
       <div className="flex w-full h-full flex-col">
         <h1> About me </h1>
         <p>

@@ -8,17 +8,17 @@ import YoutubeIcon from "../assets/svgs/youtube-icon.svg?react"
 function Welcome() {
   return (
     // controls entire widget in encompasing main
-    <div className="card">
-      <div className="flex w-full h-full justify-around">
+    <div className="card md:col-span-3 md:row-span-4">
+      <div className="flex w-full h-full justify-between ">
         <div className="flex flex-col md:max-w-[400px]">
-          <div>
+          <div className="h-full">
             {
               // Holds inner text blob and widgets
             }
-            <h6> Welcome </h6>
+            <h6 className="font-extralight text-sm text-slate-500  "> Welcome </h6>
             <p >
               <span>
-                Hi, I'm <b> Christian Velasquez </b>, an engineer and software developer
+                Hey! I'm <b> Christian Velasquez</b>, an engineer and software developer
                 with a focus on embedded systems and low-level development.
               </span>
 
@@ -27,21 +27,32 @@ function Welcome() {
                 or just to say hi!
               </span>
             </p>
-            <div className="flex flex-row gap-2">
-              <a href=""><button className="max-h-45" > <GithubIcon className="h-full w-full stroke-gray-700 fill-stone-200 " /></button></a>
-              <a href=""><button className="flex"> <LinkedinIcon className="h-full w-full stroke-gray-700 fill-stone-200" /></button></a>
-              <a href=""><button className="flex"> <YoutubeIcon className="h-full w-full stroke-gray-700 fill-stone-200" /></button></a>
-              <a href=""><button className="flex"> <YoutubeIcon className="h-full w-full stroke-gray-700 fill-stone-200" /></button></a>
-              <a href=""><button className="flex"> <YoutubeIcon className="h-full w-full stroke-gray-700 fill-stone-200" /> </button></a>
-            </div>
+          </div>
+          <div className="flex flex-row gap-4 min-w-[16rem]">
+            {
 
+              socials.map((Icon, index) => (
+                <a key={index} href="">
+                  <button key={index} className="size-full p-0"> <Icon className="size-full stroke-amber-50 fill-blue-600 " />
+
+                  </button>
+                </a>
+              ))
+            }
 
           </div>
+
+
         </div>
         <img src={hobbes} className="max-h-[300px] w-auto "></img>
       </div>
     </div>
   );
 }
-
+// TODO: Add links to map with react elements
+const socials = [
+  LinkedinIcon,
+  GithubIcon,
+  YoutubeIcon
+];
 export default Welcome

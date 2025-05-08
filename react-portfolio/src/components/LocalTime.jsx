@@ -37,8 +37,8 @@ function LocalTime() {
   const nowUTC = new Date().toLocaleTimeString("en-US", UTCopts);
 
   return (
-    <div className="card">
-      <time> My time {nowLocal}</time>
+    <div className="card flex-col overflow-hidden">
+      <p> My time {nowLocal}</p>
       <p> Visitor {nowVisitor}</p>
       <p> UTC {nowUTC}</p>
       <p> Guatemala {nowGuate}</p>

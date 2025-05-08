@@ -30,7 +30,11 @@ function App() {
   // screen no matter the size
   return (
     <>
-      <div className="fixed inset-0 -z-50 flex bg-emerald-950 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"> </div>
+      {/* TODO: Add background custom color and dot color to overarching theme */}
+      {/* <div className="fixed inset-0 -z-50 flex bg-gradient-to-b from-[#1E4941] from-0% to-gray-500 to-190%"> </div> */}
+      <div className="fixed inset-0 -z-50 flex bg-[#001211]"> </div>
+      {/* <div className="fixed inset-0 -z-40 flex bg-[radial-gradient(#111111_1.5px,transparent_1.5px)] [background-size:24px_24px]"> </div> */}
+      <div className="fixed inset-0 -z-40 flex bg-[radial-gradient(#6b6b6b.5px,transparent_1.5px)] [background-size:40px_40px]"> </div>
       <Content />
     </>
   )
@@ -44,16 +48,18 @@ function App() {
 
 function Content() {
   return (
-    <main className="grid overflow-hidden m-auto p-1 gap-1 lg:grid-rows-4 lg:grid-cols-8 ">
+    <main className="grid overflow-hidden m-auto p-2 gap-4 top-0 md:grid-cols-4 md:grid-rows-8 md:max-h-[1000px] md:max-w-[1300px]">
       <Welcome />
       <AboutMe />
       <ContactMe />
+      <LocalTime />
       <ResumeViewer />
-      <ThemeChanger />
+      <div className="card md:row-span-3"> Placeholder </div>
       <ProjectViewer background={projectlinks.portfoliowebsite[1]} projectlink={projectlinks.portfoliowebsite[0]} />
       <ProjectViewer background={projectlinks.stm32BLE[1]} projectlink={projectlinks.stm32BLE[0]} />
       <TechScrollable />
-      <LocalTime />
+      <ThemeChanger />
+      <ProjectViewer background={projectlinks.stm32BLE[1]} projectlink={projectlinks.stm32BLE[0]} />
       <Credits />
     </main >
   )
