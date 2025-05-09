@@ -46,6 +46,21 @@
   .card:hover {
     border-opacity: 60%;
   }
+
+  .carousel-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  .carousel-item {
+    min-width: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 1s ease-in-out;
+  }
 }
 body {
   margin: 0;

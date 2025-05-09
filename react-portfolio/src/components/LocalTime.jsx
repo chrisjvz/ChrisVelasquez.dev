@@ -1,4 +1,4 @@
-
+import { useState } from 'react';
 /* All options inherit this objects properties */
 const globalOpts = {
   hour12: true,
@@ -22,6 +22,7 @@ const CSTopts = {
   __proto__: globalOpts,
   timeZone: "America/Guatemala",
 }
+
 // UTC Time
 const UTCopts = {
   hour12: false,
@@ -31,20 +32,48 @@ const UTCopts = {
 
 // TODO: ADD functionality for real time updating
 function LocalTime() {
-  const nowLocal = new Date().toLocaleTimeString("en-US", PSTopts);
-  const nowVisitor = new Date().toLocaleTimeString("en-US", visitorOpts);
-  const nowGuate = new Date().toLocaleTimeString("en-US", CSTopts);
-  const nowUTC = new Date().toLocaleTimeString("en-US", UTCopts);
+  const [index, setIndex] = useState(0);
 
+  function carouselGoNext() {
+    if (index >= 3) {
+      return setIndex(0);
+    }
+    return setIndex(index + 1);
+  }
+
+  const times = [
+    new Date().toLocaleTimeString("en-US", PSTopts),
+    new Date().toLocaleTimeString("en-US", visitorOpts),
+    new Date().toLocaleTimeString("en-US", UTCopts),
+    new Date().toLocaleTimeString("en-US", CSTopts)
+  ];
+  // TODO: Add support for local storage?
   return (
-    <div className="card flex-col overflow-hidden">
-      <p> My time {nowLocal}</p>
-      <p> Visitor {nowVisitor}</p>
-      <p> UTC {nowUTC}</p>
-      <p> Guatemala {nowGuate}</p>
+    <div className="card p-4 " onClick={() => carouselGoNext()}>
+      <div className="carousel-container text-2xl overflow-hidden pb-3 "  >
+        {times.map((timez, idx) => (
+          <p key={idx} className="carousel-item transition-tranform duration-500" style={{ transform: `translate(-${index * 100}%` }} >  {timez}</p>
+        ))}
+        {/* <p className="carousel-item " style={{ transform: `translate(-${index * 100}%` }} >  {nowLocal}</p> */}
+        {/* <p className="carousel-item " style={{ transform: `translate(-${index * 100}%` }}>  {nowVisitor}</p> */}
+        {/* <p className="carousel-item " style={{ transform: `translate(-${index * 100}%` }}> {nowUTC}</p> */}
+        {/* <p className="carousel-item " style={{ transform: `translate(-${index * 100}%` }}> {nowGuate}</p> */}
+      </div>
+      <div className="flex flex-row justify-evenly px-30 mt-2 ">
+        <div className="flex flex-row justify-center gap-2 mt-2">
+          {times.map((_, i) => (console.log(index),
+            <span
+              key={i}
 
-    </div>
+              className={`rounded-full bg-amber-300 transition-all duration-300 ${index === i ? "h-4 w-4" : "h-2 w-2"}`}
+            />
+          ))}
+        </div>
+      </div>
+
+    </div >
   );
 }
+
 
 export default LocalTime
