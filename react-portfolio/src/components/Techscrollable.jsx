@@ -9,8 +9,6 @@ const loadedIcons = Object.values(globImportTechSvgs);
 
 
 /*
- * TODO: Reorder the svg files to be kinda in groups of focuses
- * Clean up / add gradient effect to the edges?
  * */
 function TechScrollable() {
   return (
