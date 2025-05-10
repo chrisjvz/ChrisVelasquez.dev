@@ -3,7 +3,7 @@ import hobbes from "../assets/catbrero.png"
 /* Svgs can be imported as react components like so*/
 import LinkedinIcon from "../assets/svgs/linkedin-icon.svg?react"
 import GithubIcon from "../assets/svgs/github-icon.svg?react"
-import YoutubeIcon from "../assets/svgs/youtube-icon.svg?react"
+import ResumeIcon from "../assets/svgs/resume-icon.svg?react"
 
 function Welcome() {
   return (
@@ -33,18 +33,16 @@ function Welcome() {
 
               socials.map((Icon, index) => (
                 <a key={index} href="">
-                  <button key={index} className="size-full p-0"> <Icon className="size-full fill-neutral-300 " />
+                  <button key={index} className="p-0"> <Icon className="size-full stroke-amber-400 fill-neutral-300 " />
 
                   </button>
                 </a>
               ))
-            }
-
-          </div>
+            } </div>
 
 
         </div>
-        <img src={hobbes} className="max-h-[300px] w-auto z-0 content-center"></img>
+        <img src={hobbes} className="max-h-[300px] w-auto z-0 content-center "></img>
       </div>
     </div>
   );
@@ -53,6 +51,6 @@ function Welcome() {
 const socials = [
   LinkedinIcon,
   GithubIcon,
-  YoutubeIcon
+  ResumeIcon
 ];
 export default Welcome
