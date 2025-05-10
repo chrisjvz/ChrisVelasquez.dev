@@ -1,9 +1,6 @@
 import hobbes from "../assets/catbrero.png"
 
-/* Svgs can be imported as react components like so*/
-import LinkedinIcon from "../assets/svgs/linkedin-icon.svg?react"
-import GithubIcon from "../assets/svgs/github-icon.svg?react"
-import ResumeIcon from "../assets/svgs/resume-icon.svg?react"
+import { buttonIcons } from "./Data";
 
 function Welcome() {
   return (
@@ -31,9 +28,9 @@ function Welcome() {
           <div className="flex flex-row gap-4 min-w-[16rem]">
             {
 
-              socials.map((Icon, index) => (
-                <a key={index} href="">
-                  <button key={index} className="p-0"> <Icon className="size-full stroke-amber-400 fill-neutral-300 " />
+              buttonIcons.map(data => (
+                <a key={data.id} href={data.resourceLink} target="_blank">
+                  <button key={data.id} className="p-0"> <data.component className="size-full stroke-amber-400 fill-neutral-300 " />
 
                   </button>
                 </a>
@@ -47,10 +44,4 @@ function Welcome() {
     </div>
   );
 }
-// TODO: Add links to map with react elements
-const socials = [
-  LinkedinIcon,
-  GithubIcon,
-  ResumeIcon
-];
 export default Welcome
