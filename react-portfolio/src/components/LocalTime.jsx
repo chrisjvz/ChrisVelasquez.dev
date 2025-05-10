@@ -49,23 +49,19 @@ function LocalTime() {
   ];
   // TODO: Add support for local storage?
   return (
-    <div className="card p-4 " onClick={() => carouselGoNext()}>
+    <div className="card p-3" onClick={() => carouselGoNext()}>
       <div className="carousel-container text-2xl overflow-hidden pb-3 "  >
         {times.map((timez, idx) => (
           <p key={idx} className="carousel-item transition-tranform duration-500" style={{ transform: `translate(-${index * 100}%` }} >  {timez}</p>
         ))}
-        {/* <p className="carousel-item " style={{ transform: `translate(-${index * 100}%` }} >  {nowLocal}</p> */}
-        {/* <p className="carousel-item " style={{ transform: `translate(-${index * 100}%` }}>  {nowVisitor}</p> */}
-        {/* <p className="carousel-item " style={{ transform: `translate(-${index * 100}%` }}> {nowUTC}</p> */}
-        {/* <p className="carousel-item " style={{ transform: `translate(-${index * 100}%` }}> {nowGuate}</p> */}
       </div>
-      <div className="flex flex-row justify-evenly px-30 mt-2 ">
-        <div className="flex flex-row justify-center gap-2 mt-2">
+      <div className="flex flex-row justify-evenly px-30  ">
+        <div className="flex flex-row items-center gap-2 h-4">
           {times.map((_, i) => (console.log(index),
             <span
               key={i}
 
-              className={`rounded-full bg-amber-300 transition-all duration-300 ${index === i ? "h-4 w-4" : "h-2 w-2"}`}
+              className={`rounded-full bg-black border-2 border-[#c9c9c9] transition-all duration-300 ${index === i ? "h-4 w-4" : "h-2 w-2"}`}
             />
           ))}
         </div>
