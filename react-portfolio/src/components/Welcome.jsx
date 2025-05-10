@@ -27,11 +27,10 @@ function Welcome() {
           </div>
           <div className="flex flex-row gap-4 min-w-[16rem]">
             {
-
               buttonIcons.map(data => (
                 <a key={data.id} href={data.resourceLink} target="_blank">
-                  <button key={data.id} className="p-0"> <data.component className="size-full stroke-amber-400 fill-neutral-300 " />
-
+                  <button key={data.id} className="p-0">
+                    <data.component className="size-full stroke-amber-400 fill-neutral-300 " />
                   </button>
                 </a>
               ))
