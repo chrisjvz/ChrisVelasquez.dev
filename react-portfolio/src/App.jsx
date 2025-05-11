@@ -1,7 +1,6 @@
 import Welcome from './components/Welcome.jsx'
 import AboutMe from './components/Aboutme.jsx'
 import ContactMe from './components/Contact.jsx'
-import ResumeViewer from './components/Resumeviewer.jsx'
 import ThemeChanger from './components/Themechanger.jsx'
 import ProjectViewer from './components/Projectviewer.jsx'
 import Credits from './components/Credits.jsx'
