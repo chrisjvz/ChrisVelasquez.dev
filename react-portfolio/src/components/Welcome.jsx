@@ -1,12 +1,12 @@
-import hobbes from "../assets/catbrero.png"
+import grad from "../assets/grad pic.png"
 
 import { buttonIcons } from "./Data";
-
+// TODO: ONE GAME THEN FIX WELCOME CARD
 function Welcome() {
   return (
     // controls entire widget in encompasing main
-    <div className="card md:col-span-3 md:row-span-4">
-      <div className="flex w-full h-full justify-between ">
+    <div className="card flex flex-row  md:col-span-3 md:row-span-4">
+      <div className="w-full h-full justify-between order-2">
         <div className="flex flex-col md:max-w-[400px] ">
           <div className="h-full">
             {
@@ -38,8 +38,8 @@ function Welcome() {
 
 
         </div>
-        <img src={hobbes} className="max-h-[300px] w-auto z-0 content-center "></img>
       </div>
+      <img src={grad} className="max-h-[300px] w-auto order-1 "></img>
     </div>
   );
 }

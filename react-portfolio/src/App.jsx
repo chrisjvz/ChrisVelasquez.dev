@@ -34,7 +34,7 @@ function Content() {
       <AboutMe />
       <ContactMe />
       <LocalTime />
-      <ResumeViewer />
+      <div className='card'> rip resumeviewer u were a real one</div>
       <div className="card md:row-span-3"> Placeholder </div>
       {
         projectData.map(project => (
