@@ -8,6 +8,7 @@ import LocalTime from './components/LocalTime.jsx'
 import TechScrollable from './components/Techscrollable.jsx'
 
 import { projectData } from './components/Data'
+import DodgersWin from './components/DodgersWin.jsx'
 
 function App() {
   // Top level div just defines a fixed background that matches the entire viewport 
@@ -33,8 +34,8 @@ function Content() {
       <AboutMe />
       <ContactMe />
       <LocalTime />
-      <div className='card'> rip resumeviewer u were a real one</div>
-      <div className="card md:row-span-3"> Placeholder </div>
+      <DodgersWin />
+      <div className="card md:row-span-1"> Placeholder </div>
       {
         projectData.map(project => (
           <ProjectViewer key={project.id} background={project.image} projectlink={project.githublink} />))

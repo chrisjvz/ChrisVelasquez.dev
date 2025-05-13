@@ -10,7 +10,7 @@ function Contactme() {
         <h6 className="text-sm pt-4 underline underline-offset-2 font-semibold"> Socials </h6>
         <ul>
           {contactData.map(contact => (
-            <li> <a key={contact.id} href={contact.link}>{contact.site}</a> </li>
+            <li key={contact.id}> <a href={contact.link}>{contact.site}</a> </li>
           ))}
         </ul>
       </div>

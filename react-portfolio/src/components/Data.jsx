@@ -74,11 +74,11 @@ export const contactData = [{
   site: "LinkedIn",
   link: personalLinks.linkedin,
 }, {
-  id: 0,
+  id: 1,
   site: "Github",
   link: personalLinks.github,
 }, {
-  id: 0,
+  id: 2,
   site: "Youtube",
   link: personalLinks.youtube,
 }]
