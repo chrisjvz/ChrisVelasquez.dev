@@ -49,7 +49,6 @@ const tmpGame = {
 function DodgersWin() {
   const [gameData, setGameData] = useState(tmpGame);
 
-
   useEffect(() => {
     fetch(previousGames)
       .then(resp => resp.json())
@@ -64,22 +63,24 @@ function DodgersWin() {
   const gameDate = gameData?.date ?? "Date loading...";
   return (
     <div className="card border-2 md:row-span-3">
-      <h2> DODGERSWIN @ PandaExpress Active?</h2>
-      <div>
-        <h3> Previous Game</h3>
-        <h2> GAME DATE: {gameDate} </h2>
-        <img src={`/public/logos/${game.teams.away.team.abbreviation}.svg`} alt="Team Logo" />
-        <img src={`/public/logos/${game.teams.home.team.abbreviation}.svg`} alt="Team Logo" />
-        <p> {game.teams.away.team.name} SCORE: {game.teams.away.score}</p>
-        <br /> <p>Vs. {game.teams.home.team.name} SCORE: {game.teams.home.score}</p> <br />
+      <div className="grid justify-items-center gap-y-2">
+        <h3 > Previous Game</h3>
         <h2> {game.venue.name} </h2>
+        {/* replace with game date */}
+        <h2> January 11th, 2025 </h2>
+        <LogoKeeper
+          awayLogo={`/logos/${game.teams.away.team.abbreviation}.svg`}
+          homeLogo={`/logos/${game.teams.home.team.abbreviation}.svg`}
+        />
+        <Scorekeeper
+          homeScore={game.teams.away.score}
+          awayScore={game.teams.home.score}
+          // Check whether or not to style scorecolor as blue for dodgers
+          dodgersHome={game.teams.home.team.id === 119}
+        />
 
-        <ul>
-          <li> Did the Dodgers win? </li>
-          <li> Was the game at Dodger Stadium? </li>
-          <li> Was the game played yesterday? </li>
-        </ul>
-        <div> DODGERSWIN ACTIVE </div>
+        <CouponConditions />
+
       </div>
       {/* Testing mlb endpoint */}
       {console.log(game.teams.away.team.abbreviation)}
@@ -93,4 +94,41 @@ function DodgersWin() {
   );
 }
 
+/* Containing div for game score */
+function Scorekeeper({ homeScore, awayScore, dodgersHome }) {
+  const colorVariant = {
+    true: "bg-[#005A9C]",
+    false: "bg-neutral-700",
+  }
+  return (
+    // Assign dodgers color to score box depending on whether or not they are the home team
+    <div className="flex-row inline-flex w-full justify-around ">
+      <div className={`${colorVariant[!dodgersHome]} border-1 rounded-lg p-2`}> <p className="text-5xl text-[#FFFFFF]"> {awayScore} </p></div>
+      <div className={`${colorVariant[dodgersHome]} border-1 rounded-lg p-2`}><p className="text-5xl text-[#FFFFFF]"> {homeScore} </p></div>
+    </div>
+  );
+}
+
+/* Dynamically assigns svg based on the team abbreviations */
+function LogoKeeper({ homeLogo, awayLogo }) {
+  return (
+    <div className="flex flex-row size-full justify-around py-5">
+      {/* <h1 className="text-xl"> @ </h1> */}
+      <img src={awayLogo} alt="Away Logo" className="w-24 h-24 " />
+      <img src={homeLogo} alt="Home Logo" className="w-24 h-24 " />
+    </div>
+  );
+
+}
+
+function CouponConditions() {
+  return (
+    <div className="text-center">
+      <div> Dodger win? </div>
+      <div> Home? </div>
+      <div> Yesterday? </div>
+      <div className="bg-emerald-400 text-black"> DODGERSWIN ACTIVE </div>
+    </div >
+  )
+}
 export default DodgersWin
