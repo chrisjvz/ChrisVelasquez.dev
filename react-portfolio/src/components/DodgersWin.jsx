@@ -67,9 +67,8 @@ function DodgersWin() {
 
   const game = gameData?.games?.[0] ?? tmpGame;
   return (
-    <div className="card border-2 md:row-span-3">
-      <div className="grid justify-items-center gap-y-2">
-        <h3 > Previous Game</h3>
+    <div className="card px-0 md:row-span-3">
+      <div className="grid justify-items-center ">
 
         <GameDateLocation
           utcTime={game.gameDate}
@@ -106,9 +105,9 @@ function DodgersWin() {
 function GameDateLocation({ utcTime, venue }) {
   const tolocal = new Date(utcTime).toLocaleDateString("en-US", dateOpts);
   return (
-    <div>
-      <h2> {venue} </h2>
-      <h2> {tolocal + " Pacific Time"} </h2>
+    <div className="text-center">
+      <h2 className="text-base/6 font-semibold"> {tolocal + " PT"} </h2>
+      <h2 className={`${venue.length > 15 ? 'text-2xl' : 'text-3xl'} font-bold`}> {venue}</h2>
     </div>
   )
 }
@@ -119,14 +118,14 @@ function GameResultViewer({ homeScore, homeLogo, awayScore, awayLogo, dodgersHom
     false: "bg-neutral-700",
   }
   return (
-    // Assign dodgers color to score box depending on whether or not they are the home team
 
-    <div className="flex flex-col size-full p-5">
-      <div className="flex flex-row justify-around items-center">
+    <div className="flex flex-col size-full ">
+      {/* Logo Container*/}
+      <div className="flex flex-row justify-around items-center py-6">
         <img src={awayLogo} alt="Away Logo" className="w-24 h-24 " />
-        <b className="text-4xl"> @ </b>
         <img src={homeLogo} alt="Home Logo" className="w-24 h-24 " />
       </div>
+      {/* Box Score Container */}
       <div className="flex flex-row justify-around">
         <span className={`${colorVariant[!dodgersHome]} border-1 size-16 rounded-lg p-2 text-2xl text-center py-4 text-[#FFFFFF]`}> {awayScore} </span>
         <span className={`${colorVariant[dodgersHome]} border-1 size-16 rounded-lg p-2 text-2xl text-center py-4 text-[#FFFFFF]`}> {homeScore} </span>
@@ -141,11 +140,13 @@ function CouponConditions({ dodgerWin, venue, utcTime }) {
   // checks if current day is the day following last played game
   const isNextDay = (new Date(utcTime).getUTCDate() + 1 === new Date().getUTCDate());
   return (
-    <div className="text-center">
-      <div> Dodger win? {dodgerWin.toString()}</div>
+    <div className="text-center text-lg">
+      <div> Dodgers win?
+        <span className="border-2 ">{dodgerWin.toString()} </span>
+      </div>
       <div> Home? {atStadium.toString()}</div>
       <div> Yesterday? {isNextDay.toString()}</div>
-      <div className="bg-emerald-400 text-black"> DODGERSWIN ACTIVE </div>
+      <div className=" border-2 text-base rounded-lg p-1 bg-emerald-600 w-52 text-[#FFFFFF]"> DODGERSWIN INACTIVE </div>
     </div >
   )
 }
