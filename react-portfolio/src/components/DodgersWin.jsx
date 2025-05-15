@@ -3,10 +3,7 @@ import { useState, useEffect } from "react";
  * DodgersWin component will async fetch dodgers latest game 
  * using the statsapi for MLB
  *
- * TODO: get yesterdays date and todays date
- *       win == true?
- *       game date == yesterday?
- *       stadium == dodger stadium?
+ * TODO:
  *       ALL conditions must be true for green button
  *       ELSE make it red and inactive
  */
@@ -20,6 +17,14 @@ const dodgerOpts = {
   month: "2-digit",
   year: "numeric",
 }
+
+const dateOpts = {
+  timeZone: "America/Los_Angeles",
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+}
+
 
 // MM/DD/YYYY
 var todaysDate = new Date().toLocaleDateString("en-US", dodgerOpts);
@@ -65,79 +70,81 @@ function DodgersWin() {
     <div className="card border-2 md:row-span-3">
       <div className="grid justify-items-center gap-y-2">
         <h3 > Previous Game</h3>
+
         <GameDateLocation
           utcTime={game.gameDate}
           venue={game.venue.name}
         />
-        < LogoKeeper
+        <GameResultViewer
           awayLogo={`/logos/${game.teams.away.team.abbreviation}.svg`}
           homeLogo={`/logos/${game.teams.home.team.abbreviation}.svg`}
-        />
-        <Scorekeeper
           homeScore={game.teams.home.score}
           awayScore={game.teams.away.score}
           // Check whether or not to style scorecolor as blue for dodgers
           dodgersHome={game.teams.home.team.id === 119}
         />
-        <CouponConditions />
+        <CouponConditions
+          // either dodgers are the away team and won or another team is the away team and won, both impliying that dodgers won the game
+          dodgerWin={((game.teams.away.isWinner && (game.teams.away.team.id === 119)) || (!game.teams.away.isWinner && (game.teams.away.team.id !== 119)))}
+          venue={game.venue.name}
+          utcTime={game.gameDate}
+        />
 
       </div>
       {/* Testing mlb endpoint */}
-      {console.log(game.teams.away.team.abbreviation)}
-      {console.log(game.venue.name)}
-      {console.log(game.teams.away.team.name)}
-      {console.log(game.teams.home.team.name)}
-      {console.log(game.teams.away.score)}
-      {console.log(game.teams.home.score)}
-      {console.log(gameData.date)}
+      {/* {console.log(game.teams.away.team.abbreviation)} */}
+      {/* {console.log(game.venue.name)} */}
+      {/* {console.log(game.teams.away.team.name)} */}
+      {/* {console.log(game.teams.home.team.name)} */}
+      {/* {console.log(game.teams.away.score)} */}
+      {/* {console.log(game.teams.home.score)} */}
+      {/* {console.log(gameData.date)} */}
     </div>
   );
 }
 
 function GameDateLocation({ utcTime, venue }) {
-  const tolocal = new Date(utcTime).toLocaleDateString("en-US", { dateStyle: "long", timeZone: "America/Los_Angeles" });
+  const tolocal = new Date(utcTime).toLocaleDateString("en-US", dateOpts);
   return (
     <div>
       <h2> {venue} </h2>
-      <h2> {tolocal} </h2>
+      <h2> {tolocal + " Pacific Time"} </h2>
     </div>
   )
 }
-/* Containing div for game score */
-function Scorekeeper({ homeScore, awayScore, dodgersHome }) {
+
+function GameResultViewer({ homeScore, homeLogo, awayScore, awayLogo, dodgersHome }) {
   const colorVariant = {
     true: "bg-[#005A9C]",
     false: "bg-neutral-700",
   }
   return (
     // Assign dodgers color to score box depending on whether or not they are the home team
-    <div className="flex-row inline-flex w-full justify-around ">
-      <div className={`${colorVariant[!dodgersHome]} border-1 rounded-lg p-2`}> <p className="text-5xl text-[#FFFFFF]"> {awayScore} </p></div>
-      <div className={`${colorVariant[dodgersHome]} border-1 rounded-lg p-2`}><p className="text-5xl text-[#FFFFFF]"> {homeScore} </p></div>
+
+    <div className="flex flex-col size-full p-5">
+      <div className="flex flex-row justify-around items-center">
+        <img src={awayLogo} alt="Away Logo" className="w-24 h-24 " />
+        <b className="text-4xl"> @ </b>
+        <img src={homeLogo} alt="Home Logo" className="w-24 h-24 " />
+      </div>
+      <div className="flex flex-row justify-around">
+        <span className={`${colorVariant[!dodgersHome]} border-1 size-16 rounded-lg p-2 text-2xl text-center py-4 text-[#FFFFFF]`}> {awayScore} </span>
+        <span className={`${colorVariant[dodgersHome]} border-1 size-16 rounded-lg p-2 text-2xl text-center py-4 text-[#FFFFFF]`}> {homeScore} </span>
+      </div>
     </div>
-  );
+  )
 }
 
-/* Dynamically assigns svg based on the team abbreviations */
-function LogoKeeper({ homeLogo, awayLogo }) {
-  return (
-    <div className="flex flex-row size-full justify-around py-5">
-      {/* <h1 className="text-xl"> @ </h1> */}
-      <img src={awayLogo} alt="Away Logo" className="w-24 h-24 " />
-      <p> @ </p>
-      {console.log("home Logo " + homeLogo)}
-      <img src={homeLogo} alt="Home Logo" className="w-24 h-24 " />
-    </div>
-  );
 
-}
-
-function CouponConditions() {
+function CouponConditions({ dodgerWin, venue, utcTime }) {
+  const atStadium = venue === "Dodger Stadium";
+  // checks if current day is the day following last played game
+  const isNextDay = (new Date(utcTime).getUTCDate() + 1 === new Date().getUTCDate());
   return (
     <div className="text-center">
-      <div> Dodger win? </div>
-      <div> Home? </div>
-      <div> Yesterday? </div>
+      <div> Dodger win? {dodgerWin.toString()}</div>
+      <div> Home? {atStadium.toString()}</div>
+      <div> Yesterday? {isNextDay.toString()}</div>
       <div className="bg-emerald-400 text-black"> DODGERSWIN ACTIVE </div>
     </div >
   )
