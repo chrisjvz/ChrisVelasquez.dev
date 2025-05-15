@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
  */
 
 // FIX: Consider moving all this to Data.jsx
-const previousGames = 'https://statsapi.mlb.com/api/v1/teams/119?&hydrate=previousSchedule(team)&fields=teams,id,name,sport,id,previousGameSchedule,dates,date,games,teams,away,home,team,venue,isWinner,abbreviation,score'
+const previousGames = 'https://statsapi.mlb.com/api/v1/teams/119?&hydrate=previousSchedule(team)&fields=teams,id,name,sport,id,previousGameSchedule,dates,date,gameDate,games,teams,away,home,team,venue,isWinner,abbreviation,score'
 const dodgerOpts = {
   hour12: true,
   timeZone: "America/Los_Angeles",
@@ -25,6 +25,7 @@ const dodgerOpts = {
 var todaysDate = new Date().toLocaleDateString("en-US", dodgerOpts);
 
 const tmpGame = {
+  gameDate: "Date loading...",
   venue: {
     name: "Venue loading...",
   },
@@ -60,25 +61,24 @@ function DodgersWin() {
   }, []);
 
   const game = gameData?.games?.[0] ?? tmpGame;
-  const gameDate = gameData?.date ?? "Date loading...";
   return (
     <div className="card border-2 md:row-span-3">
       <div className="grid justify-items-center gap-y-2">
         <h3 > Previous Game</h3>
-        <h2> {game.venue.name} </h2>
-        {/* replace with game date */}
-        <h2> January 11th, 2025 </h2>
-        <LogoKeeper
+        <GameDateLocation
+          utcTime={game.gameDate}
+          venue={game.venue.name}
+        />
+        < LogoKeeper
           awayLogo={`/logos/${game.teams.away.team.abbreviation}.svg`}
           homeLogo={`/logos/${game.teams.home.team.abbreviation}.svg`}
         />
         <Scorekeeper
-          homeScore={game.teams.away.score}
-          awayScore={game.teams.home.score}
+          homeScore={game.teams.home.score}
+          awayScore={game.teams.away.score}
           // Check whether or not to style scorecolor as blue for dodgers
           dodgersHome={game.teams.home.team.id === 119}
         />
-
         <CouponConditions />
 
       </div>
@@ -94,6 +94,15 @@ function DodgersWin() {
   );
 }
 
+function GameDateLocation({ utcTime, venue }) {
+  const tolocal = new Date(utcTime).toLocaleDateString("en-US", { dateStyle: "long", timeZone: "America/Los_Angeles" });
+  return (
+    <div>
+      <h2> {venue} </h2>
+      <h2> {tolocal} </h2>
+    </div>
+  )
+}
 /* Containing div for game score */
 function Scorekeeper({ homeScore, awayScore, dodgersHome }) {
   const colorVariant = {
@@ -115,6 +124,8 @@ function LogoKeeper({ homeLogo, awayLogo }) {
     <div className="flex flex-row size-full justify-around py-5">
       {/* <h1 className="text-xl"> @ </h1> */}
       <img src={awayLogo} alt="Away Logo" className="w-24 h-24 " />
+      <p> @ </p>
+      {console.log("home Logo " + homeLogo)}
       <img src={homeLogo} alt="Home Logo" className="w-24 h-24 " />
     </div>
   );
