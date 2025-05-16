@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+
+import CheckmarkSvg from "../assets/svgs/checkmark.svg?react";
+import XmarkSvg from "../assets/svgs/x.svg?react";
 /*
  * DodgersWin component will async fetch dodgers latest game 
  * using the statsapi for MLB
@@ -10,6 +13,7 @@ import { useState, useEffect } from "react";
 
 // FIX: Consider moving all this to Data.jsx
 const previousGames = 'https://statsapi.mlb.com/api/v1/teams/119?&hydrate=previousSchedule(team)&fields=teams,id,name,sport,id,previousGameSchedule,dates,date,gameDate,games,teams,away,home,team,venue,isWinner,abbreviation,score'
+
 const dodgerOpts = {
   hour12: true,
   timeZone: "America/Los_Angeles",
@@ -138,15 +142,23 @@ function GameResultViewer({ homeScore, homeLogo, awayScore, awayLogo, dodgersHom
 function CouponConditions({ dodgerWin, venue, utcTime }) {
   const atStadium = venue === "Dodger Stadium";
   // checks if current day is the day following last played game
+  // TODO: FIX UTC DATE TO PST DATE
   const isNextDay = (new Date(utcTime).getUTCDate() + 1 === new Date().getUTCDate());
   return (
-    <div className="text-center text-lg">
-      <div> Dodgers win?
-        <span className="border-2 ">{dodgerWin.toString()} </span>
+    <div className="text-xl text-left w-xs pt-4 flex flex-col gap-1.5 ">
+      {/* {dodgerWin.toString()} */}
+      <div className="flex justify-between items-center ">
+        <span className="">Dodgers Win </span><CheckmarkSvg className="inline ml-4 size-8 fill-green-400 " />
       </div>
-      <div> Home? {atStadium.toString()}</div>
-      <div> Yesterday? {isNextDay.toString()}</div>
-      <div className=" border-2 text-base rounded-lg p-1 bg-emerald-600 w-52 text-[#FFFFFF]"> DODGERSWIN INACTIVE </div>
+      {/* {atStadium.toString()} */}
+      <div className="flex justify-between items-center"> Home
+        <XmarkSvg className="inline size-8  ml-4 fill-red-400 self-end" />
+      </div>
+      {/* {isNextDay.toString()} */}
+      <div className="flex justify-between items-center"> Yesterday
+        <CheckmarkSvg className="inline size-8 fill-green-400 ml-4 " />
+      </div>
+      <div className="border-2 text-base self-center text-center rounded-lg p-1 bg-emerald-600 w-52 text-[#FFFFFF]"> DODGERSWIN INACTIVE </div>
     </div >
   )
 }
