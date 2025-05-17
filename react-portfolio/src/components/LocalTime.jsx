@@ -57,7 +57,7 @@ function LocalTime() {
       </div>
       <div className="flex flex-row justify-evenly px-30  ">
         <div className="flex flex-row items-center gap-2 h-4">
-          {times.map((_, i) => (console.log(index),
+          {times.map((_, i) => (
             <span
               key={i}
 

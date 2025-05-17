@@ -1,26 +1,9 @@
+// FIX: Consider moving all this to Data.jsx
 import { useState, useEffect } from "react";
-
 import CheckmarkSvg from "../assets/svgs/checkmark.svg?react";
 import XmarkSvg from "../assets/svgs/x.svg?react";
-/*
- * DodgersWin component will async fetch dodgers latest game 
- * using the statsapi for MLB
- *
- * TODO:
- *       ALL conditions must be true for green button
- *       ELSE make it red and inactive
- */
 
-// FIX: Consider moving all this to Data.jsx
 const previousGames = 'https://statsapi.mlb.com/api/v1/teams/119?&hydrate=previousSchedule(team)&fields=teams,id,name,sport,id,previousGameSchedule,dates,date,gameDate,games,teams,away,home,team,venue,isWinner,abbreviation,score'
-
-const dodgerOpts = {
-  hour12: true,
-  timeZone: "America/Los_Angeles",
-  day: "2-digit",
-  month: "2-digit",
-  year: "numeric",
-}
 
 const dateOpts = {
   timeZone: "America/Los_Angeles",
@@ -29,12 +12,8 @@ const dateOpts = {
   year: "numeric",
 }
 
-
-// MM/DD/YYYY
-var todaysDate = new Date().toLocaleDateString("en-US", dodgerOpts);
-
 const tmpGame = {
-  gameDate: "Date loading...",
+  gameDate: new Date().toLocaleDateString(),
   venue: {
     name: "Venue loading...",
   },
@@ -56,6 +35,12 @@ const tmpGame = {
   },
 }
 
+// FIX: Consider moving all this to Data.jsx
+
+/*
+ * DodgersWin component will async fetch dodgers latest game 
+ * using the statsapi for MLB
+ */
 function DodgersWin() {
   const [gameData, setGameData] = useState(tmpGame);
 
@@ -65,7 +50,7 @@ function DodgersWin() {
       .then(jsonData => setGameData(jsonData.teams[0].previousGameSchedule.dates.at(-1)));
 
     return () => {
-      console.log("goodbye cruel world");
+      console.log("goodbye cruel world, cleaning up :(");
     }
   }, []);
 
@@ -140,25 +125,41 @@ function GameResultViewer({ homeScore, homeLogo, awayScore, awayLogo, dodgersHom
 
 
 function CouponConditions({ dodgerWin, venue, utcTime }) {
+  /* checks if current day is the day following last played game date (both in pst) */
+  const dateformatDayMonthPST = new Intl.DateTimeFormat("en-US", { day: "2-digit", month: "2-digit", timeZone: "America/Los_Angeles" })
+  const gameDateInPSTParts = dateformatDayMonthPST.formatToParts(new Date(utcTime));
+  const nowDateInPSTParts = dateformatDayMonthPST.formatToParts(Date.now());
+  // console.log("now in parts " + nowDateInPSTParts);
+  // console.log("game date in parts " + gameDateInPSTParts);
+  // console.log("game date month " + gameDateInPSTParts[0].value);
+  // console.log("now date month " + nowDateInPSTParts[0].value);
+
+  /* ...InPSTParts returns an object array { 0:month, 1:`/`, 2:date }*/
+  // BUG: Account for new month / first day 
+  // ex. may31st game day, june 1st current date will result in false
+  const isNextDay = (nowDateInPSTParts[0].value === gameDateInPSTParts[0].value) && (nowDateInPSTParts[2].value === ((parseInt(gameDateInPSTParts[2].value) + 1).toString()))
   const atStadium = venue === "Dodger Stadium";
-  // checks if current day is the day following last played game
-  // TODO: FIX UTC DATE TO PST DATE
-  const isNextDay = (new Date(utcTime).getUTCDate() + 1 === new Date().getUTCDate());
+  const couponActive = isNextDay && atStadium && dodgerWin;
   return (
     <div className="text-xl text-left w-xs pt-4 flex flex-col gap-1.5 ">
-      {/* {dodgerWin.toString()} */}
+      {/* dodgers win bool */}
       <div className="flex justify-between items-center ">
-        <span className="">Dodgers Win </span><CheckmarkSvg className="inline ml-4 size-8 fill-green-400 " />
+        Dodgers Win
+        {dodgerWin ? <CheckmarkSvg className="inline ml-4 size-8 fill-green-400 " /> : <XmarkSvg className="inline size-8  ml-4 fill-red-400 self-end" />}
       </div>
-      {/* {atStadium.toString()} */}
+      {/* home stadium bool */}
       <div className="flex justify-between items-center"> Home
-        <XmarkSvg className="inline size-8  ml-4 fill-red-400 self-end" />
+        {atStadium ? <CheckmarkSvg className="inline ml-4 size-8 fill-green-400 " /> : <XmarkSvg className="inline size-8  ml-4 fill-red-400 self-end" />}
       </div>
-      {/* {isNextDay.toString()} */}
+      {/* previous date bool */}
       <div className="flex justify-between items-center"> Yesterday
-        <CheckmarkSvg className="inline size-8 fill-green-400 ml-4 " />
+        {isNextDay ? <CheckmarkSvg className="inline ml-4 size-8 fill-green-400 " /> : <XmarkSvg className="inline size-8  ml-4 fill-red-400 self-end" />}
       </div>
-      <div className="border-2 text-base self-center text-center rounded-lg p-1 bg-emerald-600 w-52 text-[#FFFFFF]"> DODGERSWIN INACTIVE </div>
+
+      <div className={` ${couponActive ? "bg-emerald-600" : "bg-red-500"} border-2 text-base self-center text-center rounded-lg p-1  w-52 text-[#FFFFFF]`}>
+
+        {(couponActive) ? "DODGERSWIN ACTIVE" : "DODGERSWIN INACTIVE"}
+      </div>
     </div >
   )
 }
