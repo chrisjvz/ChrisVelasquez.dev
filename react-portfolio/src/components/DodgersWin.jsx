@@ -1,8 +1,8 @@
 // FIX: Consider moving all this to Data.jsx
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import CheckmarkSvg from "../assets/svgs/checkmark.svg?react";
 import XmarkSvg from "../assets/svgs/x.svg?react";
-
+import WhatsThisSvg from "../assets/svgs/whatsthis.svg?react";
 const previousGames = 'https://statsapi.mlb.com/api/v1/teams/119?&hydrate=previousSchedule(team)&fields=teams,id,name,sport,id,previousGameSchedule,dates,date,gameDate,games,teams,away,home,team,venue,isWinner,abbreviation,score'
 
 const dateOpts = {
@@ -36,39 +36,80 @@ const tmpGame = {
 }
 
 // FIX: Consider moving all this to Data.jsx
-
+// TODO: ADD Fade out on conditional tooltip unmount
 /*
  * DodgersWin component will async fetch dodgers latest game 
  * using the statsapi for MLB
  */
 function DodgersWin() {
   const [gameData, setGameData] = useState(tmpGame);
+  const game = gameData?.games?.[0] ?? tmpGame;
 
+  const [showTT, setShowTT] = useState(false);
+  const tooltipRef = useRef(null); // constant ref to determine whether or not click happened within the elem
+  /* Handles asyncronous fetch to the MLB API */
   useEffect(() => {
     fetch(previousGames)
       .then(resp => resp.json())
-      .then(jsonData => setGameData(jsonData.teams[0].previousGameSchedule.dates.at(-1)));
+      .then(jsonData => setGameData(jsonData.teams[0].previousGameSchedule.dates.at(-1)))
 
     return () => {
       console.log("goodbye cruel world, cleaning up :(");
     }
   }, []);
 
-  const game = gameData?.games?.[0] ?? tmpGame;
-  return (
-    <div className="card px-0 md:row-span-3">
-      <div className="grid justify-items-center ">
+  /*
+  * <ref>.current is from the react hook docs 
+  * the hook returns an object with the current property set to either intial val or the dom object
+  * <ref>.current.contains uses the Node API to check whether the current Node either the parent or any of the children in
+  * the passed in arguments
+  */
+  const handleTTEvent = (event) => {
+    if (tooltipRef.current && tooltipRef.current.contains(event.target)) {
+      setShowTT(false);
+    }
+  }
 
+  /* Handles attaching event listeners on for button press */
+  useEffect(() => {
+    if (showTT) {
+      document.addEventListener('mousedown', handleTTEvent);
+    }
+    else {
+      document.removeEventListener('mousedown', handleTTEvent);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleTTEvent);
+    }
+    // will only activate on state change
+  }, [showTT]);
+
+
+  return (
+    // basically put it at the top right of the card no matter what, and do not mess with the spacing or flow of the rest of the card
+    <div className="card px-0 md:row-span-3 relative">
+
+      {/* Conditional Tooltip Controlling Button */}
+      <button className="cursor-pointer items-center w-10 h-10 absolute top-2 right-2 right-100% "
+        onClick={() => setShowTT(!showTT)}>
+        <WhatsThisSvg className="fill-neutral-100 w-10 h-10 " />
+      </button>
+      {/* Conditional Tooltip Info */}
+      {showTT && <ClickForInfo ref={tooltipRef} />}
+
+      {/* Main UI */}
+      <div className="grid justify-items-center ">
         <GameDateLocation
           utcTime={game.gameDate}
           venue={game.venue.name}
         />
+
         <GameResultViewer
           awayLogo={`/logos/${game.teams.away.team.abbreviation}.svg`}
           homeLogo={`/logos/${game.teams.home.team.abbreviation}.svg`}
           homeScore={game.teams.home.score}
           awayScore={game.teams.away.score}
-          // Check whether or not to style scorecolor as blue for dodgers
+          // style check for Dodgers with team ID
           dodgersHome={game.teams.home.team.id === 119}
         />
         <CouponConditions
@@ -79,18 +120,52 @@ function DodgersWin() {
         />
 
       </div>
-      {/* Testing mlb endpoint */}
-      {/* {console.log(game.teams.away.team.abbreviation)} */}
-      {/* {console.log(game.venue.name)} */}
-      {/* {console.log(game.teams.away.team.name)} */}
-      {/* {console.log(game.teams.home.team.name)} */}
-      {/* {console.log(game.teams.away.score)} */}
-      {/* {console.log(game.teams.home.score)} */}
-      {/* {console.log(gameData.date)} */}
-    </div>
+    </div >
   );
 }
 
+/* Conditional Tooltip Explaining this widget */
+function ClickForInfo({ ref }) {
+  return (
+    <span ref={ref} className="animate-fade-in-element p-4 h-full w-full z-10 absolute top-0 bg-black text-white text-sm/5  " >
+      <h3 className="text-center text-2xl"> What is this? </h3>
+      <p className="pt-2 pb-2">
+        <b>DODGERSWIN </b> is a Panda Express coupon code valid in the Greater LA area for the 2024-25
+        LA Dodgers season.
+      </p>
+
+      <p>
+        This code reduces the cost of a plate to <b>$6</b> if these conditions are all met...
+      </p>
+      <ul className="list-disc list-inside">
+        <li> The Dodgers must <b>win</b> the game</li>
+        <li> The game must be at <b>Dodger Stadium </b> </li>
+        <li> The coupon is being redeemed the <b>NEXT</b> day </li>
+      </ul>
+
+      <p className="pt-2" >
+
+        <b> Example: </b><td />
+        Angels vs Dodgers, <i>Score: </i>10-15<td />
+        @ Dodger Stadium, <i>Date: </i> 5/19/2025<td />
+      </p>
+      <ul className="list-disc list-inside">
+        <li> The Venue was Dodger Stadium </li>
+        <li> The Dodgers won by 5 runs </li>
+        <li> I'm craving some Panda Express on May 20th</li>
+      </ul>
+      <br />
+      <p>
+        I found myself looking up box scores and filtering for location and dates
+        often enough at the gym that I figured I'd automate this process and squeeze in a few extra
+        workouts instead 💪
+      </p>
+
+
+    </span>
+  )
+}
+/* Holds Venue and Date in PST */
 function GameDateLocation({ utcTime, venue }) {
   const tolocal = new Date(utcTime).toLocaleDateString("en-US", dateOpts);
   return (
@@ -100,7 +175,7 @@ function GameDateLocation({ utcTime, venue }) {
     </div>
   )
 }
-
+/* Holds Scorecards and Logos of playing teams */
 function GameResultViewer({ homeScore, homeLogo, awayScore, awayLogo, dodgersHome }) {
   const colorVariant = {
     true: "bg-[#005A9C]",
@@ -123,21 +198,19 @@ function GameResultViewer({ homeScore, homeLogo, awayScore, awayLogo, dodgersHom
   )
 }
 
-
+/* Holds conditions required to be met for food coupon to activate */
 function CouponConditions({ dodgerWin, venue, utcTime }) {
   /* checks if current day is the day following last played game date (both in pst) */
   const dateformatDayMonthPST = new Intl.DateTimeFormat("en-US", { day: "2-digit", month: "2-digit", timeZone: "America/Los_Angeles" })
   const gameDateInPSTParts = dateformatDayMonthPST.formatToParts(new Date(utcTime));
   const nowDateInPSTParts = dateformatDayMonthPST.formatToParts(Date.now());
-  // console.log("now in parts " + nowDateInPSTParts);
-  // console.log("game date in parts " + gameDateInPSTParts);
-  // console.log("game date month " + gameDateInPSTParts[0].value);
-  // console.log("now date month " + nowDateInPSTParts[0].value);
 
   /* ...InPSTParts returns an object array { 0:month, 1:`/`, 2:date }*/
   // BUG: Account for new month / first day 
   // ex. may31st game day, june 1st current date will result in false
-  const isNextDay = (nowDateInPSTParts[0].value === gameDateInPSTParts[0].value) && (nowDateInPSTParts[2].value === ((parseInt(gameDateInPSTParts[2].value) + 1).toString()))
+
+  const isNextDay = (nowDateInPSTParts[0].value === gameDateInPSTParts[0].value)
+    && (nowDateInPSTParts[2].value === ((parseInt(gameDateInPSTParts[2].value) + 1).toString()))
   const atStadium = venue === "Dodger Stadium";
   const couponActive = isNextDay && atStadium && dodgerWin;
   return (
@@ -147,17 +220,21 @@ function CouponConditions({ dodgerWin, venue, utcTime }) {
         Dodgers Win
         {dodgerWin ? <CheckmarkSvg className="inline ml-4 size-8 fill-green-400 " /> : <XmarkSvg className="inline size-8  ml-4 fill-red-400 self-end" />}
       </div>
+
       {/* home stadium bool */}
-      <div className="flex justify-between items-center"> Home
+      <div className="flex justify-between items-center">
+        Home
         {atStadium ? <CheckmarkSvg className="inline ml-4 size-8 fill-green-400 " /> : <XmarkSvg className="inline size-8  ml-4 fill-red-400 self-end" />}
       </div>
+
       {/* previous date bool */}
-      <div className="flex justify-between items-center"> Yesterday
+      <div className="flex justify-between items-center">
+        Yesterday
         {isNextDay ? <CheckmarkSvg className="inline ml-4 size-8 fill-green-400 " /> : <XmarkSvg className="inline size-8  ml-4 fill-red-400 self-end" />}
       </div>
 
-      <div className={` ${couponActive ? "bg-emerald-600" : "bg-red-500"} border-2 text-base self-center text-center rounded-lg p-1  w-52 text-[#FFFFFF]`}>
-
+      {/* active coupon button */}
+      <div className={` ${couponActive ? "bg-emerald-600" : "bg-red-500"} font-medium  border-2 mt-2 text-base self-center text-center rounded-lg p-1 w-52 text-[#FFFFFF]`}>
         {(couponActive) ? "DODGERSWIN ACTIVE" : "DODGERSWIN INACTIVE"}
       </div>
     </div >

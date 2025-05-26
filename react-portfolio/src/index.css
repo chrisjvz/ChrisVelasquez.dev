@@ -19,6 +19,17 @@
 }
 
 @theme {
+  --animate-fade-in-element: fade-in-element 300ms ease-out forwards;
+
+  @keyframes fade-in-element {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 0.9;
+    }
+  }
+
   --animate-infinite-scroll: infinite-scroll 25s linear infinite;
 
   @keyframes infinite-scroll {
@@ -61,6 +72,25 @@
     justify-content: center;
     transition: 1s ease-in-out;
   }
+  .basic-button {
+    border-radius: 0.5em;
+    border: 2px solid;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    border-color: #6b6b6b;
+    background-color: #002b28;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  .basic-button:hover {
+    border-color: #646cff;
+  }
+  .basic-button:focus,
+  .basic-button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
 }
 body {
   margin: 0;
@@ -68,26 +98,6 @@ body {
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
-}
-
-button {
-  border-radius: 0.5em;
-  border: 2px solid;
-  padding: 0.5em 1em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  border-color: #6b6b6b;
-  background-color: #002b28;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {

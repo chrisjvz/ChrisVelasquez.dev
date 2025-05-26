@@ -30,7 +30,7 @@ function Welcome() {
           {
             buttonIcons.map(data => (
               <a key={data.id} href={data.resourceLink} target="_blank" className="">
-                <button key={data.id} >
+                <button key={data.id} className="basic-button" >
                   <data.component className="size-full fill-neutral-200 p-2" />
                 </button>
               </a>
