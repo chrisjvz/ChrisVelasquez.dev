@@ -10,17 +10,17 @@ function Welcome() {
         {/* Text */}
         <div className="flex flex-col col-span-1 row-span-1 order-2 pl-2 md:max-w-[400px] ">
 
-          <h6 className="font-light text-sm text-slate-500 pb-1 "> Hey there! </h6>
+          <h6 className=" font-light text-sm text-text-secondary pb-1 "> Hey there! </h6>
 
           <p className="text-sm/5 font-normal">
             <span>
-              I'm <b> Christian Velasquez</b>, an engineer and software developer
-              with a focus on embedded systems and low-level development.
+              I'm <b> Christian Velasquez</b>, an Engineer and Software Developer
+              with a focus on Embedded Systems and Low-Level development.
             </span>
 
             <span className="block mt-5">
               Feel free to look around my site, reach out with career opportunities,
-              or just say hi!
+              or just to say hi!
             </span>
           </p>
         </div>
@@ -31,7 +31,7 @@ function Welcome() {
             buttonIcons.map(data => (
               <a key={data.id} href={data.resourceLink} target="_blank" className="">
                 <button key={data.id} className="basic-button" >
-                  <data.component className="size-full fill-neutral-200 p-2" />
+                  <data.component className="size-full fill-text-primary p-2" />
                 </button>
               </a>
             ))

@@ -9,8 +9,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--color-text-primary);
+  background-color: var(--color-primary);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,6 +18,75 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@theme {
+  --color-primary: var(--theme-primary-bg-color);
+  --color-secondary: var(--theme-secondary-bg-color);
+  --color-card-primary: var(--theme-primary-card-color);
+
+  --color-text-primary: var(--theme-primary-text-color);
+  --color-text-secondary: var(--theme-secondary-text-color);
+  --color-text-accent: var(--theme-accent-text-color);
+
+  --color-border-primary: var(--theme-primary-border-color);
+}
+
+/* Personal Forest Green Theme */
+html[data-theme="base"] {
+  --theme-primary-bg-color: #001211;
+  --theme-secondary-bg-color: #50a288;
+  --theme-primary-card-color: #00211f;
+
+  --theme-primary-text-color: #ffffff; /* does de affect alpha? */
+  --theme-secondary-text-color: #50a288;
+  --theme-accent-text-color: #00bc7d;
+
+  --theme-primary-border-color: #6b6b6b;
+}
+/* LA Lakers theme */
+html[data-theme="lakers"] {
+  --theme-primary-bg-color: #191919;
+  --theme-secondary-bg-color: #fdb927;
+  --theme-primary-card-color: #552583;
+
+  --theme-primary-text-color: #f2f0ef; /* White, maybe change? */
+  --theme-secondary-text-color: #fdb927;
+  --theme-accent-text-color: #fdb927;
+
+  --theme-primary-border-color: #fdb927;
+}
+/* - Dodgers Theme */
+/*   - Dodger Blue #005A9C  */
+/*   - Red #EF3E42 */
+/*   - Silver #A5ACAF */
+
+html[data-theme="dodgers"] {
+  --theme-primary-bg-color: #a5acaf;
+  --theme-secondary-bg-color: #ef3e42;
+  --theme-primary-card-color: #005a9c;
+
+  --theme-primary-text-color: #ffffff;
+  --theme-secondary-text-color: #ef3e42;
+  --theme-accent-text-color: #ef3e42;
+
+  --theme-primary-border-color: #ef3e42;
+}
+/* - UCSD Theme */
+/*   - Navy #182B49 */
+/*   - Gold #C69214 */
+/*   - Blue #00629B */
+/*   - Yellow #FFCD00 */
+
+html[data-theme="tritons"] {
+  --theme-primary-bg-color: #0d1828;
+  --theme-secondary-bg-color: #c69214;
+  --theme-primary-card-color: #182b49;
+
+  --theme-primary-text-color: #ffffff;
+  --theme-secondary-text-color: #c69214;
+  --theme-accent-text-color: #c69214;
+
+  --theme-primary-border-color: #c69214;
+}
 @theme {
   --animate-fade-in-element: fade-in-element 300ms ease-out forwards;
 
@@ -49,9 +118,9 @@
     border-width: 1px;
     border-radius: var(--radius-lg);
     padding: 1.5em;
-    border-color: #6b6b6b;
+    border-color: var(--color-border-primary);
 
-    background-color: #00211f;
+    background-color: var(--color-card-primary);
   }
 
   .card:hover {
@@ -79,8 +148,8 @@
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    border-color: #6b6b6b;
-    background-color: #002b28;
+    border-color: var(--color-border-primary);
+    background-color: var(--color-card-primary);
     cursor: pointer;
     transition: border-color 0.25s;
   }
@@ -99,11 +168,30 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-secondary);
+}
+@utility bg-themed-dots {
+  background-image:
+    radial-gradient(var(--color-secondary) 1px, transparent 0.5px),
+    radial-gradient(var(--color-secondary) 1px, transparent 0.5px);
+  background-size: 91px 91px;
+  background-position:
+    0 0,
+    15px 15px;
+  background-color: rgb(
+    var(--color-primary) / <alpha-value>
+  ); /* Use themed background color */
+}
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    background-color: var(--color-primary);
   }
   a:hover {
     color: #747bff;

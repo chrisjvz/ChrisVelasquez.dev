@@ -3,7 +3,7 @@ function AboutMe() {
   return (
     <div className="card md:row-span-6 text-sm/5">
       <div className="flex w-full h-full flex-col gap-2">
-        <h1 className="text-3xl pb-1"> About me </h1>
+        <h1 className=" text-3xl text-text-secondary pb-1"> About me </h1>
         <p className="">
           <span >
             Hey, I'm Chris, an embedded software engineer from California with a <b>B.S. Computer Engineering</b> from

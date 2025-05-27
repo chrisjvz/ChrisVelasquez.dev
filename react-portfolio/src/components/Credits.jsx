@@ -4,8 +4,8 @@ function Credits() {
     <div className="card content-center">
       <p className="text-xs/4 text-center">
         © 2025 · Crafted with ❤️ using
-        <a href="https://react.dev/" target="_blank" className="text-emerald-500"> React </a>
-        &<a href="https://tailwindcss.com/" target="_blank" className="text-emerald-500"> Tailwind </a>
+        <a href="https://react.dev/" target="_blank" className="text-text-accent"> React </a>
+        &<a href="https://tailwindcss.com/" target="_blank" className="text-text-accent"> Tailwind </a>
         by Christian
       </p>
     </div>

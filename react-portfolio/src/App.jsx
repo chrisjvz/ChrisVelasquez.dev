@@ -15,8 +15,8 @@ function App() {
   // screen no matter the size
   return (
     <>
-      <div className="fixed inset-0 -z-50 flex bg-[#001211]"> </div>
-      <div className="fixed inset-0 -z-40 flex bg-[radial-gradient(#6b6b6b.5px,transparent_1.5px)] [background-size:40px_40px]"> </div>
+      <div className="fixed inset-0 -z-50 flex bg-color-primary"> </div>
+      <div className="fixed inset-0 -z-40 flex bg-themed-dots "> </div>
       <Content />
     </>
   )
@@ -35,7 +35,7 @@ function Content() {
       <ContactMe />
       <LocalTime />
       <DodgersWin />
-      <div className="card md:row-span-1"> Placeholder </div>
+      <div className="card md:row-span-1 "> <h1 className='text-2xl text-center'> Work In Progress! </h1> </div>
       {
         projectData.map(project => (
           <ProjectViewer key={project.id} background={project.image} projectlink={project.githublink} />))

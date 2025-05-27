@@ -170,8 +170,8 @@ function GameDateLocation({ utcTime, venue }) {
   const tolocal = new Date(utcTime).toLocaleDateString("en-US", dateOpts);
   return (
     <div className="text-center">
-      <h2 className="text-base/6 font-semibold"> {tolocal + " PT"} </h2>
-      <h2 className={`${venue.length > 15 ? 'text-2xl' : 'text-3xl'} font-bold`}> {venue}</h2>
+      <h2 className="!text-text-primary text-base/6 font-semibold"> {tolocal + " PT"} </h2>
+      <h2 className={`${venue.length > 15 ? 'text-2xl' : 'text-3xl'} !text-text-primary font-bold`}> {venue}</h2>
     </div>
   )
 }
