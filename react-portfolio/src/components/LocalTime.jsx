@@ -61,7 +61,7 @@ function LocalTime() {
             <span
               key={i}
 
-              className={`rounded-full bg-black border-2 border-[#c9c9c9] transition-all duration-300 ${index === i ? "h-4 w-4" : "h-2 w-2"}`}
+              className={`rounded-full bg-primary border-2 border-secondary transition-all duration-300 ${index === i ? "h-4 w-4" : "h-2 w-2"}`}
             />
           ))}
         </div>

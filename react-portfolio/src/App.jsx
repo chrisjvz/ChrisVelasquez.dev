@@ -29,7 +29,7 @@ function App() {
 
 function Content() {
   return (
-    <main className="grid overflow-hidden m-auto p-2 gap-4 top-0 md:grid-cols-4 md:grid-rows-8 md:max-h-[1000px] md:max-w-[1300px]">
+    <main className="grid overflow-hidden m-auto p-2 gap-4 top-0 md:grid-cols-4 md:grid-rows-8 md:max-h-[1000px] md:max-w-[1400px]">
       <Welcome />
       <AboutMe />
       <ContactMe />
@@ -38,7 +38,12 @@ function Content() {
       <div className="card md:row-span-1 "> <h1 className='text-2xl text-center'> Work In Progress! </h1> </div>
       {
         projectData.map(project => (
-          <ProjectViewer key={project.id} background={project.image} projectlink={project.githublink} />))
+          <ProjectViewer key={project.id}
+            background={project.image}
+            projectlink={project.githublink}
+            mobileDesc={project.mobileDesc}
+            mobileTitle={project.mobileTitle}
+          />))
       }
       <TechScrollable />
       <ThemeChanger />

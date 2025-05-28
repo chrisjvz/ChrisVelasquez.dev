@@ -36,7 +36,7 @@ export const buttonIcons = [{
 /* Image imports */
 import mcuImg from "../assets/stm32.jpg"
 import dsGasImg from "../assets/gasdatascience.jpg"
-import portfolioSiteImg from "../assets/catbrero.png"
+import portfolioSiteImg from "../assets/portfoliosite.jpeg"
 
 const projectlinks = {
   smt32blesensor: "https://github.com/cse-190e-fall-2023/youlostit-project-1-blinkenlights-32-bit-monstas",
@@ -51,17 +51,22 @@ export const projectData = [{
   id: 0,
   image: mcuImg,
   githublink: projectlinks.smt32blesensor,
-
+  mobileTitle: "BLE-Enabled Device Locator",
+  mobileDesc: "STM32 Microcontroller, Register-Level Firmware in C, tested using a Digital Logic Analyzer",
 }, {
   id: 1,
   // TODO : ADD LINK FOR DATASCIENCE PROJECT
   image: dsGasImg,
   githublink: "",
+  mobileTitle: "Russia-Ukraine Crisis Analysis",
+  mobileDesc: "EDA using Python3, Jupyter Notebooks, Pandas, Scipy, and Seaborn ",
 
 }, {
   id: 2,
   image: portfolioSiteImg,
   githublink: projectlinks.portfoliowebsite,
+  mobileTitle: "Portfolio Website",
+  mobileDesc: "Portfolio site built using Vite, React, Javascript, TailwindCSS and deployed on Github Pages",
 
 }]
 

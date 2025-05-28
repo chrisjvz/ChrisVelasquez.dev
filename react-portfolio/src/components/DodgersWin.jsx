@@ -234,7 +234,7 @@ function CouponConditions({ dodgerWin, venue, utcTime }) {
       </div>
 
       {/* active coupon button */}
-      <div className={` ${couponActive ? "bg-emerald-600" : "bg-red-500"} font-medium  border-2 mt-2 text-base self-center text-center rounded-lg p-1 w-52 text-[#FFFFFF]`}>
+      <div className={` ${couponActive ? "bg-emerald-600" : "bg-[#ef3e42]"} font-medium  border-2 mt-2 text-base self-center text-center rounded-lg p-1 w-52 text-[#FFFFFF]`}>
         {(couponActive) ? "DODGERSWIN ACTIVE" : "DODGERSWIN INACTIVE"}
       </div>
     </div >
