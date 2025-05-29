@@ -16,6 +16,7 @@ function ThemeChanger() {
 }
 
 function setTheme({ theme }) {
+  localStorage.setItem("data-theme", theme);
   return document.documentElement.setAttribute("data-theme", theme);
 }
 

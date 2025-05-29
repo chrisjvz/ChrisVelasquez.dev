@@ -10,9 +10,13 @@ import TechScrollable from './components/Techscrollable.jsx'
 import { projectData } from './components/Data'
 import DodgersWin from './components/DodgersWin.jsx'
 
+import { useEffect } from "react";
 function App() {
+  /* Use local storage to persist chosen theme on reload or reopen*/
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", localStorage.getItem('data-theme') ?? 'base');
+  }), [];
   // Top level div just defines a fixed background that matches the entire viewport 
-  // screen no matter the size
   return (
     <>
       <div className="fixed inset-0 -z-50 flex bg-color-primary"> </div>
@@ -24,7 +28,6 @@ function App() {
 
 /*
  * Overarching site container styled as a grid container with 4 cols
- *
  * */
 
 function Content() {
@@ -51,5 +54,7 @@ function Content() {
     </main >
   )
 }
+
+
 
 export default App
