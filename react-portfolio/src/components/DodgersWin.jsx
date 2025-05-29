@@ -87,18 +87,18 @@ function DodgersWin() {
 
   return (
     // basically put it at the top right of the card no matter what, and do not mess with the spacing or flow of the rest of the card
-    <div className="card px-0 md:row-span-3 relative">
+    <div className="card px-0 relative md:order-5 md:row-span-10 md:col-span-2 md:pt-4 lg:col-span-1  ">
 
       {/* Conditional Tooltip Controlling Button */}
       <button className="cursor-pointer items-center w-10 h-10 absolute top-2 right-2 right-100% "
         onClick={() => setShowTT(!showTT)}>
-        <WhatsThisSvg className="fill-neutral-100 w-10 h-10 " />
+        <WhatsThisSvg className="fill-neutral-100 w-10 h-10" />
       </button>
       {/* Conditional Tooltip Info */}
       {showTT && <ClickForInfo ref={tooltipRef} />}
 
       {/* Main UI */}
-      <div className="grid justify-items-center ">
+      <div className="grid justify-items-center">
         <GameDateLocation
           utcTime={game.gameDate}
           venue={game.venue.name}
@@ -185,14 +185,14 @@ function GameResultViewer({ homeScore, homeLogo, awayScore, awayLogo, dodgersHom
 
     <div className="flex flex-col size-full ">
       {/* Logo Container*/}
-      <div className="flex flex-row justify-around items-center py-6">
-        <img src={awayLogo} alt="Away Logo" className="w-24 h-24 " />
-        <img src={homeLogo} alt="Home Logo" className="w-24 h-24 " />
+      <div className="flex flex-row justify-around items-center py-6 md:py-4">
+        <img src={awayLogo} alt="Away Logo" className="size-24 md:size-20  " />
+        <img src={homeLogo} alt="Home Logo" className="size-24 md:size-20 " />
       </div>
       {/* Box Score Container */}
       <div className="flex flex-row justify-around">
-        <span className={`${colorVariant[!dodgersHome]} border-1 size-16 rounded-lg p-2 text-2xl text-center py-4 text-[#FFFFFF]`}> {awayScore} </span>
-        <span className={`${colorVariant[dodgersHome]} border-1 size-16 rounded-lg p-2 text-2xl text-center py-4 text-[#FFFFFF]`}> {homeScore} </span>
+        <span className={`${colorVariant[!dodgersHome]} border-1 size-16 rounded-lg p-2 text-2xl text-center py-4 text-[#FFFFFF] md:size-12 md:py-2 `}> {awayScore} </span>
+        <span className={`${colorVariant[dodgersHome]}  border-1 size-16 rounded-lg p-2 text-2xl text-center py-4 text-[#FFFFFF] md:size-12 md:py-2 `}> {homeScore} </span>
       </div>
     </div>
   )
@@ -214,7 +214,7 @@ function CouponConditions({ dodgerWin, venue, utcTime }) {
   const atStadium = venue === "Dodger Stadium";
   const couponActive = isNextDay && atStadium && dodgerWin;
   return (
-    <div className="text-xl text-left w-xs pt-4 flex flex-col gap-1.5 ">
+    <div className="text-xl text-left w-xs pt-4 flex flex-col gap-1.5 md:gap-1 md:-mt-1">
       {/* dodgers win bool */}
       <div className="flex justify-between items-center ">
         Dodgers Win
@@ -234,7 +234,7 @@ function CouponConditions({ dodgerWin, venue, utcTime }) {
       </div>
 
       {/* active coupon button */}
-      <div className={` ${couponActive ? "bg-emerald-600" : "bg-[#ef3e42]"} font-medium  border-2 mt-2 text-base self-center text-center rounded-lg p-1 w-52 text-[#FFFFFF]`}>
+      <div className={` ${couponActive ? "bg-emerald-600" : "bg-[#ef3e42]"} font-medium  border-2 mt-2 text-base self-center text-center rounded-lg p-1 w-52 text-[#FFFFFF] md:mt-0 `}>
         {(couponActive) ? "DODGERSWIN ACTIVE" : "DODGERSWIN INACTIVE"}
       </div>
     </div >

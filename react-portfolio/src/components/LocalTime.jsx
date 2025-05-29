@@ -47,21 +47,20 @@ function LocalTime() {
     new Date().toLocaleTimeString("en-US", UTCopts),
     new Date().toLocaleTimeString("en-US", CSTopts)
   ];
-  // TODO: Add support for local storage?
   return (
-    <div className="card p-3" onClick={() => carouselGoNext()}>
-      <div className="carousel-container text-2xl overflow-hidden pb-3 "  >
+    <div className="card p-2 md:order-3 md:row-span-3 md:py-5" onClick={() => carouselGoNext()}>
+      <div className="carousel-container text-2xl overflow-hidden pb-3 lg:text-3xl"  >
         {times.map((timez, idx) => (
           <p key={idx} className="carousel-item transition-tranform duration-500" style={{ transform: `translate(-${index * 100}%` }} >  {timez}</p>
         ))}
       </div>
-      <div className="flex flex-row justify-evenly px-30  ">
-        <div className="flex flex-row items-center gap-2 h-4">
+      <div className="flex flex-row justify-center pt-2 md:pt-2">
+        <div className="flex flex-row items-center gap-2 h-4 md:h-4">
           {times.map((_, i) => (
             <span
               key={i}
 
-              className={`rounded-full bg-primary border-2 border-secondary transition-all duration-300 ${index === i ? "h-4 w-4" : "h-2 w-2"}`}
+              className={`rounded-full bg-primary border-2 border-secondary transition-all duration-300 ${index === i ? "h-4 w-4 md:size-6" : "h-2 w-2 md:size-3"}`}
             />
           ))}
         </div>

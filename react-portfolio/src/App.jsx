@@ -32,13 +32,11 @@ function App() {
 
 function Content() {
   return (
-    <main className="grid overflow-hidden m-auto p-2 gap-4 top-0 md:grid-cols-4 md:grid-rows-8 md:max-h-[1000px] md:max-w-[1400px]">
+    <main className="grid overflow-hidden m-auto p-2 gap-4 top-0 md:grid-cols-4 md:grid-rows-24 lg:grid-rows-8 md:max-h-[1000px] md:max-w-[1400px]">
       <Welcome />
       <AboutMe />
       <ContactMe />
       <LocalTime />
-      <DodgersWin />
-      <div className="card md:row-span-1 "> <h1 className='text-2xl text-center'> Work In Progress! </h1> </div>
       {
         projectData.map(project => (
           <ProjectViewer key={project.id}
@@ -48,6 +46,9 @@ function Content() {
             mobileTitle={project.mobileTitle}
           />))
       }
+
+      {/* <div className="card md:row-span-1 "> <h1 className='text-2xl text-center'> Work In Progress! </h1> </div> */}
+      <DodgersWin />
       <TechScrollable />
       <ThemeChanger />
       <Credits />

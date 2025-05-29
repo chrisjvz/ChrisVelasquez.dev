@@ -1,17 +1,14 @@
 function AboutMe() {
-  /* TODO: Tailwind css here for styling */
   return (
-    <div className="card md:row-span-6 text-sm/5">
-      <div className="flex w-full h-full flex-col gap-2">
-        <h1 className=" text-3xl text-text-secondary pb-1"> About me </h1>
-        <p className="">
-          <span >
-            Hey, I'm Chris, an embedded software engineer from California with a <b>B.S. Computer Engineering</b> from
-            UC San Diego. Go Tritons!
-          </span>
+    <div className="card text-sm/5 md:order-2 md:row-span-10 md:col-span-2 lg:col-span-1 lg:row-span-6">
+      <div className="flex w-full h-full flex-col gap-2 md:gap-1">
+        <h1 className="text-3xl text-text-secondary text-center pb-1 md:text-2xl md:pb-0"> About me </h1>
+        <p className="md:pb-1">
+          Hey, I'm Chris, an Embedded Software Engineer from California with a <b>B.S. Computer Engineering</b> from
+          UC San Diego. Go Tritons!
         </p>
         <span className=""> My primary tools of choice include: </span>
-        <ul className="list-disc list-inside text-base">
+        <ul className="list-disc list-inside text-base md:text-sm/4">
           <li> C/C++</li>
           <li> STM32 / ESP32</li>
           <li> Python</li>
@@ -21,14 +18,13 @@ function AboutMe() {
         </ul>
 
         <p className="pt-1">
-          At the end of the day, creating and developing software is more than just
-          a hobby for me. I love taking deep dives into new tools, tech, and utilities
+          I genuinely enjoy taking deep dives into new tools and technologies
           with the goal of widening my knowledge base and discovering novel ways to
           tackle challenging problems!
         </p>
         <p>
           Beyond coding, I'm passionate about homelabbing, videography, youtube,
-          volleyball, fitness, and walking my cat.
+          fitness, volleyball and walking my cat.
         </p>
 
       </div>

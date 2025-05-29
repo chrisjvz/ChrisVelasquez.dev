@@ -12,13 +12,13 @@ const loadedIcons = Object.values(globImportTechSvgs);
  * */
 function TechScrollable() {
   return (
-    <div className="card w-full inline-flex flex-nowrap overflow-hidden">
+    <div className="card w-full inline-flex flex-nowrap overflow-hidden md:order-7 md:row-span-2">
       <ul className="flex items-center justify-start animate-infinite-scroll">
         {/* Make the array twice as long then create the list items 
         */}
         {loadedIcons.concat(loadedIcons).map((Icon, index) => (
           <li key={index} className="mx-4">
-            <Icon.default className="w-12 h-12" />
+            <Icon.default className="size-12 md:size-8" />
           </li>
         ))}
       </ul>
