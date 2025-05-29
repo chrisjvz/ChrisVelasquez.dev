@@ -4,7 +4,7 @@ import { buttonIcons } from "./Data";
 function Welcome() {
   return (
     // controls entire widget in encompasing main
-    <div className="card flex flex-row p-2 md:order-1 md:col-span-4 md:row-span-8 lg:row-span-4 lg:col-span-3 ">
+    <div className="card flex flex-row p-2 md:order-1 md:col-span-4 md:row-span-8 lg:row-span-6 lg:col-span-3 lg:order-auto lg:row-start-1 lg:col-start-1">
 
       <div className="grid grid-cols-2 grid-rows-auto md:grid-rows-2 md:w-full md:mx-4 md:mb-4">
 
@@ -37,7 +37,7 @@ function Welcome() {
           } </div>
 
         {/* Image */}
-        <img src={grad} className="col-span-1 row-span-1 w-auto order-1 mask-x-from-75% mask-y-from-90% md:ml-4 md:row-span-2 md:max-h-[500px] md:max-w-[220px] lg:max-w-[320px] "></img>
+        <img src={grad} className="col-span-1 row-span-1 w-auto order-1 mask-x-from-75% mask-y-from-90% md:ml-4 md:row-span-2 md:max-h-[500px] md:max-w-[220px] lg:max-w-[345px] "></img>
       </div>
     </div>
   );

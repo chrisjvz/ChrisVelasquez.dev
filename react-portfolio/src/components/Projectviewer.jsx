@@ -1,7 +1,7 @@
 
 function ProjectViewer({ background, projectlink, mobileDesc, mobileTitle }) {
   return (
-    <div className="card p-0 max-h-[250px] relative md:order-4 md:row-span-3" >
+    <div className="card p-0 max-h-[250px] relative md:order-4 md:row-span-3 lg:row-span-3 lg:order-auto " >
       <a href={projectlink} className="flex w-full h-full" target="_blank">
         <img src={background} className="h-full w-full object-cover rounded-lg transition-opacity duration-300 hover:opacity-60"></img>
         {/* Mobile View for projects */}

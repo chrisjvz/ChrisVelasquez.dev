@@ -39,7 +39,7 @@
     }
   }
 
-  --animate-infinite-scroll: infinite-scroll 25s linear infinite;
+  --animate-infinite-scroll: infinite-scroll 45s linear infinite;
 
   @keyframes infinite-scroll {
     0% {

@@ -12,7 +12,7 @@ const loadedIcons = Object.values(globImportTechSvgs);
  * */
 function TechScrollable() {
   return (
-    <div className="card w-full inline-flex flex-nowrap overflow-hidden md:order-7 md:row-span-2">
+    <div className="card w-full inline-flex flex-nowrap overflow-hidden md:order-7 md:row-span-2 lg:row-span-1 lg:order-auto lg:col-start-2 lg:row-start-12">
       <ul className="flex items-center justify-start animate-infinite-scroll">
         {/* Make the array twice as long then create the list items 
         */}

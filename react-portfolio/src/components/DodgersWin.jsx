@@ -87,7 +87,7 @@ function DodgersWin() {
 
   return (
     // basically put it at the top right of the card no matter what, and do not mess with the spacing or flow of the rest of the card
-    <div className="card px-0 relative md:order-5 md:row-span-10 md:col-span-2 md:pt-4 lg:col-span-1  ">
+    <div className="card px-0 relative md:order-5 md:row-span-10 md:col-span-2 md:pt-4 lg:col-span-1 lg:row-span-6 lg:order-auto lg:col-start-1 lg:row-start-7 ">
 
       {/* Conditional Tooltip Controlling Button */}
       <button className="cursor-pointer items-center w-10 h-10 absolute top-2 right-2 right-100% "
@@ -127,7 +127,7 @@ function DodgersWin() {
 /* Conditional Tooltip Explaining this widget */
 function ClickForInfo({ ref }) {
   return (
-    <span ref={ref} className="animate-fade-in-element p-4 h-full w-full z-10 absolute top-0 bg-black text-white text-sm/5  " >
+    <span ref={ref} className="overflow-auto animate-fade-in-element p-4 h-full w-full z-10 absolute top-0 bg-black text-white text-sm/5  " >
       <h3 className="text-center text-2xl"> What is this? </h3>
       <p className="pt-2 pb-2">
         <b>DODGERSWIN </b> is a Panda Express coupon code valid in the Greater LA area for the 2024-25
@@ -170,8 +170,8 @@ function GameDateLocation({ utcTime, venue }) {
   const tolocal = new Date(utcTime).toLocaleDateString("en-US", dateOpts);
   return (
     <div className="text-center">
-      <h2 className="!text-text-primary text-base/6 font-semibold"> {tolocal + " PT"} </h2>
-      <h2 className={`${venue.length > 15 ? 'text-2xl' : 'text-3xl'} !text-text-primary font-bold`}> {venue}</h2>
+      <h2 className="!text-text-primary text-base/6 font-semibold lg:text-lg"> {tolocal + " PT"} </h2>
+      <h2 className={`${venue.length > 15 ? 'text-2xl lg:text-3xl' : 'text-3xl lg:text-4xl'} !text-text-primary font-bold`}>{venue}</h2>
     </div>
   )
 }
@@ -183,16 +183,16 @@ function GameResultViewer({ homeScore, homeLogo, awayScore, awayLogo, dodgersHom
   }
   return (
 
-    <div className="flex flex-col size-full ">
+    <div className="flex flex-col size-full">
       {/* Logo Container*/}
-      <div className="flex flex-row justify-around items-center py-6 md:py-4">
-        <img src={awayLogo} alt="Away Logo" className="size-24 md:size-20  " />
-        <img src={homeLogo} alt="Home Logo" className="size-24 md:size-20 " />
+      <div className="flex flex-row justify-around items-center py-6 md:py-4 lg:py-4">
+        <img src={awayLogo} alt="Away Logo" className="size-24 md:size-20 lg:size-24  " />
+        <img src={homeLogo} alt="Home Logo" className="size-24 md:size-20 lg:size-24" />
       </div>
       {/* Box Score Container */}
       <div className="flex flex-row justify-around">
-        <span className={`${colorVariant[!dodgersHome]} border-1 size-16 rounded-lg p-2 text-2xl text-center py-4 text-[#FFFFFF] md:size-12 md:py-2 `}> {awayScore} </span>
-        <span className={`${colorVariant[dodgersHome]}  border-1 size-16 rounded-lg p-2 text-2xl text-center py-4 text-[#FFFFFF] md:size-12 md:py-2 `}> {homeScore} </span>
+        <span className={`${colorVariant[!dodgersHome]} border-1 size-16 rounded-lg p-2 text-2xl text-center py-4 text-[#FFFFFF] md:size-12 md:py-2 lg:size-16 lg:py-4 `}> {awayScore} </span>
+        <span className={`${colorVariant[dodgersHome]}  border-1 size-16 rounded-lg p-2 text-2xl text-center py-4 text-[#FFFFFF] md:size-12 md:py-2 lg:size-16 lg:py-4 `}> {homeScore} </span>
       </div>
     </div>
   )
@@ -214,7 +214,7 @@ function CouponConditions({ dodgerWin, venue, utcTime }) {
   const atStadium = venue === "Dodger Stadium";
   const couponActive = isNextDay && atStadium && dodgerWin;
   return (
-    <div className="text-xl text-left w-xs pt-4 flex flex-col gap-1.5 md:gap-1 md:-mt-1">
+    <div className="text-xl text-left w-xs pt-4 flex flex-col gap-1.5 md:gap-1 md:-mt-1 lg:gap-1.5 lg:px-4">
       {/* dodgers win bool */}
       <div className="flex justify-between items-center ">
         Dodgers Win
@@ -234,7 +234,7 @@ function CouponConditions({ dodgerWin, venue, utcTime }) {
       </div>
 
       {/* active coupon button */}
-      <div className={` ${couponActive ? "bg-emerald-600" : "bg-[#ef3e42]"} font-medium  border-2 mt-2 text-base self-center text-center rounded-lg p-1 w-52 text-[#FFFFFF] md:mt-0 `}>
+      <div className={` ${couponActive ? "bg-emerald-600" : "bg-[#ef3e42]"} font-medium  border-2 mt-2 text-base self-center text-center rounded-lg p-1 w-52 text-[#FFFFFF]  md:mt-0 lg:mt-2`}>
         {(couponActive) ? "DODGERSWIN ACTIVE" : "DODGERSWIN INACTIVE"}
       </div>
     </div >

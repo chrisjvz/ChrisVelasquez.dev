@@ -48,19 +48,19 @@ function LocalTime() {
     new Date().toLocaleTimeString("en-US", CSTopts)
   ];
   return (
-    <div className="card p-2 md:order-3 md:row-span-3 md:py-5" onClick={() => carouselGoNext()}>
+    <div className="card p-2 md:order-3 md:row-span-3 md:py-5 lg:row-span-2 lg:order-auto lg:col-start-2 lg:row-start-10 lg:flex lg:flex-col lg:justify-between lg:py-7 " onClick={() => carouselGoNext()}>
       <div className="carousel-container text-2xl overflow-hidden pb-3 lg:text-3xl"  >
         {times.map((timez, idx) => (
           <p key={idx} className="carousel-item transition-tranform duration-500" style={{ transform: `translate(-${index * 100}%` }} >  {timez}</p>
         ))}
       </div>
-      <div className="flex flex-row justify-center pt-2 md:pt-2">
-        <div className="flex flex-row items-center gap-2 h-4 md:h-4">
+      <div className="flex flex-row justify-center pt-2 lg:pt-0">
+        <div className="flex flex-row items-center gap-2 h-4 ">
           {times.map((_, i) => (
             <span
               key={i}
 
-              className={`rounded-full bg-primary border-2 border-secondary transition-all duration-300 ${index === i ? "h-4 w-4 md:size-6" : "h-2 w-2 md:size-3"}`}
+              className={`rounded-full bg-primary border-2 border-secondary transition-all duration-300 ${index === i ? "h-4 w-4 md:size-6 lg:size-7" : "h-2 w-2 md:size-3 lg:size-4"}`}
             />
           ))}
         </div>

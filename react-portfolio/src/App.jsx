@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <div className="fixed inset-0 -z-50 flex bg-color-primary"> </div>
-      <div className="fixed inset-0 -z-40 flex bg-themed-dots "> </div>
+      <div className="fixed inset-0 -z-40 flex "> </div>
       <Content />
     </>
   )
@@ -32,7 +32,7 @@ function App() {
 
 function Content() {
   return (
-    <main className="grid overflow-hidden m-auto p-2 gap-4 top-0 md:grid-cols-4 md:grid-rows-24 lg:grid-rows-8 md:max-h-[1000px] md:max-w-[1400px]">
+    <main className="grid overflow-hidden m-auto p-2 gap-4 top-0 md:grid-cols-4 md:grid-rows-24 lg:grid-rows-12 md:max-h-[1000px] md:max-w-[1400px]">
       <Welcome />
       <AboutMe />
       <ContactMe />
