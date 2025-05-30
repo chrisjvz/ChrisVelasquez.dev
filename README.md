@@ -1,18 +1,12 @@
-# Chrisvelasquez.com
- Hey! This is a personal website to show off current projects for recruiters or job interviews.
- This website could not have been made possible without Youtube and Professor Google :sweat_smile: 
- <br>
- ### To-do list:
- - [ ] Change colors for svg icons to match theme/improve readablility
- - [ ] Revamp color-container and social-container without skew
- - [ ] Add Interest page
- - [ ] Add Resume link (preview or download?)
- - [ ] Add Projects Page
- - [ ] Revamp text within color-container div class
- - [ ] Fill whitespace with relevant info!
- - [ ] Do more projects!!!!
- 
- Please feel free to make suggestions or provide feedback!
- ## Sources used:
- - Gary Simon and his incredible intro to Html, Css and a bit of Javascript: https://www.youtube.com/watch?v=8gNrZ4lAnAw
- - FontAwesome for their free icons under their [license](https://fontawesome.com/license) and Ralph Design @ Pixabay under their [license](https://pixabay.com/service/license/)
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

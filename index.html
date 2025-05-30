@@ -1,105 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Christian Velasquez</title>
-    <link href="main.css" type="text/css" rel="stylesheet">
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <a href="https://github.com/AmnesiacSloth/ChrisVelasquez.com">
-          <img src="Images/slothIcon.png" alt="Ralf Designs @ pixabay" class="logo">
-          <nav>
-            <a href="#" class="hide-desktop">
-              <img src="Images/ham.png" alt="toggle menu" class="menu" id="menu">
-            </a>
-            <ul class="show-desktop hide-mobile" id="nav">
-              <li id="exit" class="exit-btn hide-desktop">
-                <img src="Images/exit.svg" alt="exit menu"> </li>
-              <li><a href="#" class="buttons"><span>Interests</span></a> </li>
-              <li><a href="#" class="buttons"><span>Resume</span></a></li>
-              <li><a href="#" class="buttons"><span>Projects</span></a></li>
-              <li><a href="#" class="buttons"><span>Home</span></a></li>
-            </ul>
-          </nav>
-        </a>
-      </header>
-      <section>
-        <img src="Images/costaportrait.jpg" alt="portrait" class="portrait">
-        <h1>Christian Velasquez</h1>
-        <p class="subhead">Hey there! I'm Chris, a undergraduate student at
-          UC San Diego pursing a B.S in Computer Engineering. I've been crazy about computers
-          ever since I saved up enough for a custom pc in 2013. The field of computer engineering has
-          limitless applications in today's world and I'd like to one day contribute to our technological advancement!
-           Feel free to look around my site and get to know me a little better!</p>
-           <img src="Images/downarrow.svg" alt="scroll down" class="scroll hide-mobile show-desktop">
-      </section>
-    </div>
-    <div class="color-container">
-      <div class="container">
-        <ul>
-          <li> <img src="Images/projects.svg" alt="Projects Icon">
-            <p> My projects range from discord bots, microcontroller management
-               and frontend design such as this website!
-              Interested? Click the icon to read more!</p>
-          </li>
-          <li> <img src="Images/resume.svg" alt="Resume Icon">
-            <p> Currently seeking volunteer work or internships in software
-              or hardware! Know anyone who's looking for some help? Click above
-               to download my resume!</p>
-          </li>
-          <li> <img src="Images/interests.svg" alt="Interests Icon" >
-            <p> I'm very passionate about other things besides Computer
-              Engineering! Want to hear more about my interests and what
-              I like to do with my spare time?</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="social-container">
-      <div class="container">
-      <ul>
-        <li>
-          <a href="https://github.com/AmnesiacSloth" target="_blank">
-          <img src="Images/github.svg" alt="github icon" class="socials"></a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/in/christian-velasquez-b6819a1a5/" target="_blank">
-          <img src="Images/LinkedIn.svg" alt="LinkedIn icon" class="socials"></a>
-        </li>
-        <li>
-          <a href="mailto:cjvelasq@ucsd.edu" title="cjvelasq@ucsd.edu" target="_blank">
-          <img src="Images/email.svg" alt="Email icon" class="socials"></a>
-        </li>
-        <li>
-          <a href="https://www.reddit.com/user/AmnesiacSloth/" target="_blank">
-          <img src="Images/reddit.svg" alt="reddit icon" class="socials"></a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/chris.rar/?hl=en" target="_blank">
-          <img src="Images/instagram.svg" alt="insta icon" class="socials"></a>
-        </li>
-      </ul>
-      </div>
-    </div>
+<!doctype html>
+<html lang="en" data-theme="base">
 
-    <script type="text/javascript">
-      var menu = document.getElementById('menu');
-      var nav = document.getElementById('nav');
-      var exit = document.getElementById('exit');
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Christian Velasquez - Software Engineer</title>
+</head>
 
-      menu.addEventListener('click',function(e) {
-        nav.classList.toggle('hide-mobile');
-        e.preventDefault();
-      });
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
 
-      exit.addEventListener('click',function(e) {
-        nav.classList.add('hide-mobile');
-        e.preventDefault();
-      })
-    </script>
-  </body>
 </html>

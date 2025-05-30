@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import "tailwindcss";
+
+:root {
+  /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--color-text-primary);
+  background-color: var(--color-primary);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@theme {
+  --breakpoint-lg: 82rem;
+
+  --color-primary: var(--theme-primary-bg-color);
+  --color-secondary: var(--theme-secondary-bg-color);
+  --color-card-primary: var(--theme-primary-card-color);
+
+  --color-text-primary: var(--theme-primary-text-color);
+  --color-text-secondary: var(--theme-secondary-text-color);
+  --color-text-accent: var(--theme-accent-text-color);
+
+  --color-border-primary: var(--theme-primary-border-color);
+  --animate-fade-in-element: fade-in-element 300ms ease-out forwards;
+
+  @keyframes fade-in-element {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 0.9;
+    }
+  }
+
+  --animate-infinite-scroll: infinite-scroll 45s linear infinite;
+
+  @keyframes infinite-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* Personal Forest Green Theme */
+html[data-theme="base"] {
+  --theme-primary-bg-color: #001211;
+  --theme-secondary-bg-color: #50a288;
+  --theme-primary-card-color: #00211f;
+
+  --theme-primary-text-color: #ffffff; /* does de affect alpha? */
+  --theme-secondary-text-color: #50a288;
+  --theme-accent-text-color: #00bc7d;
+
+  --theme-primary-border-color: #6b6b6b;
+}
+/* LA Lakers theme */
+html[data-theme="lakers"] {
+  --theme-primary-bg-color: #191919;
+  --theme-secondary-bg-color: #fdb927;
+  --theme-primary-card-color: #552583;
+
+  --theme-primary-text-color: #f2f0ef; /* White, maybe change? */
+  --theme-secondary-text-color: #fdb927;
+  --theme-accent-text-color: #fdb927;
+
+  --theme-primary-border-color: #fdb927;
+}
+/* - Dodgers Theme */
+/*   - Dodger Blue #005A9C  */
+/*   - Red #EF3E42 */
+/*   - Silver #A5ACAF */
+
+html[data-theme="dodgers"] {
+  --theme-primary-bg-color: #a5acaf;
+  --theme-secondary-bg-color: #ef3e42;
+  --theme-primary-card-color: #005a9c;
+
+  --theme-primary-text-color: #ffffff;
+  --theme-secondary-text-color: #ef3e42;
+  --theme-accent-text-color: #ef3e42;
+
+  --theme-primary-border-color: #ef3e42;
+}
+/* - UCSD Theme */
+/*   - Navy #182B49 */
+/*   - Gold #C69214 */
+/*   - Blue #00629B */
+/*   - Yellow #FFCD00 */
+
+html[data-theme="tritons"] {
+  --theme-primary-bg-color: #0d1828;
+  --theme-secondary-bg-color: #c69214;
+  --theme-primary-card-color: #182b49;
+
+  --theme-primary-text-color: #ffffff;
+  --theme-secondary-text-color: #c69214;
+  --theme-accent-text-color: #c69214;
+
+  --theme-primary-border-color: #c69214;
+}
+@layer components {
+  .card {
+    grid-column: span 1 / span 1;
+    grid-row: span 1 / span 1;
+    border-width: 1px;
+    border-radius: var(--radius-lg);
+    padding: 1.5em;
+    border-color: var(--color-border-primary);
+
+    background-color: var(--color-card-primary);
+  }
+
+  .card:hover {
+    border-opacity: 60%;
+  }
+
+  .carousel-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+  }
+
+  .carousel-item {
+    min-width: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 1s ease-in-out;
+  }
+  .basic-button {
+    border-radius: 0.5em;
+    border: 2px solid;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    border-color: var(--color-border-primary);
+    background-color: var(--color-card-primary);
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  .basic-button:hover {
+    border-color: #646cff;
+  }
+  .basic-button:focus,
+  .basic-button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+}
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-secondary);
+}
+
+@utility bg-themed-dots {
+  background-image:
+    radial-gradient(var(--color-secondary) 1px, transparent 0.5px),
+    radial-gradient(var(--color-secondary) 1px, transparent 0.5px);
+  background-size: 91px 91px;
+  background-position:
+    0 0,
+    15px 15px;
+  background-color: rgb(
+    var(--color-primary) / <alpha-value>
+  ); /* Use themed background color */
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    background-color: var(--color-primary);
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
