@@ -207,6 +207,16 @@ your components (or other hooks).
 
 > If you want to use `useState` in a condition or loop, extract a new component and put it there
 
+### useEffect 
+
+For use when dealing with a external system and syncronizing components
+- Can be the brower DOM, which would be
+considered external from the Virtual DOM
+
+- API Calls
+
+
+
 ## Sharing Data Between Components
 
 If you need components to *share data and update together*, you need to move the 
@@ -249,6 +259,8 @@ function MyButton({ count, onClick }) {
   );
 }
 ```
+
+
 
 
 

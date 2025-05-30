@@ -4,29 +4,15 @@
 
 Written in React :)
 
-## Set Up for Local Hosting 
-
 ## Credits 
 This site uses the following tools and technologies
 * Vite
-* React
+* React Js
 * Tailwind CSS
-* Chafa
-
-### Chafa 
-Cool cli tool that generates text-based art from images
-<!-- TODO: Need to explain this line and args --> 
-`chafa -f symbols -s 300x300 -c 240 -w 9 <imgpath>`
-
-## Todo List
-
-* [x] Create nice file structure for assets 
-* [x] Style 1 component
-* [x] Break up UI into components
-* [x] Design site
-* [x] Attach Resume / contacts
-* [ ] Deploy 
-
+* Npm 
+* Major League Baseball API 
+* DateTime API
+* Github Actions
 
 
 ### General Structure of my page
@@ -39,16 +25,34 @@ Cool cli tool that generates text-based art from images
       * linkedin
       * discord
       * etc
-    * Image (use chafa?)
   * Contact with socials, thin
-  * Local weather? / Time in timezone / converted to UTC
-  * Project 1 - http server?
+  * Local weather / Time in timezone / converted to UTC
+  * Project 1 - BLE sensor 
   * Project 2 - cogs108
   * Project 3 - idk website
-  * Fun little minigame? Maybe a theme changer
+  * Theme changer
   * About me Block 
     * Quick overview, like name, dev type, stack, education, country
     * tools / technologies
     * Beyond dev work interests
   * Resume box
   * Small credits box  
+
+## Working with MLB public API endpoints
+
+### Useful codes for my lil Dodgers widget
+
+Dodgers team ID: 119
+
+MLB league ID: sportsId=1
+
+Get previous 5 games from game schedule
+
+`https://statsapi.mlb.com/api/v1/teams/<teamId>?hydrate=previousSchedule`
+
+# TODO 
+- NOTE: When will mlb api update
+  - around 10am pst 
+
+
+
