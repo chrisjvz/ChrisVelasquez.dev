@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 /* All options inherit this objects properties */
 const globalOpts = {
   hour12: true,
@@ -33,6 +33,26 @@ const UTCopts = {
 // TODO: ADD functionality for real time updating
 function LocalTime() {
   const [index, setIndex] = useState(0);
+  const [formattedTimes, setFormattedTimes] = useState([
+    new Date().toLocaleTimeString("en-US", PSTopts),
+    new Date().toLocaleTimeString("en-US", visitorOpts),
+    new Date().toLocaleTimeString("en-US", UTCopts),
+    new Date().toLocaleTimeString("en-US", CSTopts)
+  ]);
+
+  function updateTimeArrays() {
+    const now = new Date();
+
+
+    const nowTimes = [
+      new Date().toLocaleTimeString("en-US", PSTopts),
+      new Date().toLocaleTimeString("en-US", visitorOpts),
+      new Date().toLocaleTimeString("en-US", UTCopts),
+      new Date().toLocaleTimeString("en-US", CSTopts)
+    ];
+    setFormattedTimes(nowTimes);
+
+  }
 
   function carouselGoNext() {
     if (index >= 3) {
@@ -41,22 +61,24 @@ function LocalTime() {
     return setIndex(index + 1);
   }
 
-  const times = [
-    new Date().toLocaleTimeString("en-US", PSTopts),
-    new Date().toLocaleTimeString("en-US", visitorOpts),
-    new Date().toLocaleTimeString("en-US", UTCopts),
-    new Date().toLocaleTimeString("en-US", CSTopts)
-  ];
+  useEffect(() => {
+    updateTimeArrays();
+    // call update every min 
+    const interval = setInterval(() => {
+      updateTimeArrays();
+    }, 60 * 1000);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <div className="card p-2 md:order-3 md:row-span-3 md:py-5 lg:row-span-2 lg:order-auto lg:col-start-2 lg:row-start-10 lg:flex lg:flex-col lg:justify-between lg:py-7 " onClick={() => carouselGoNext()}>
       <div className="carousel-container text-2xl overflow-hidden pb-3 lg:text-3xl"  >
-        {times.map((timez, idx) => (
+        {formattedTimes.map((timez, idx) => (
           <p key={idx} className="carousel-item transition-tranform duration-500" style={{ transform: `translate(-${index * 100}%` }} >  {timez}</p>
         ))}
       </div>
       <div className="flex flex-row justify-center pt-2 lg:pt-0">
         <div className="flex flex-row items-center gap-2 h-4 ">
-          {times.map((_, i) => (
+          {formattedTimes.map((_, i) => (
             <span
               key={i}
 

@@ -37,7 +37,9 @@ function Welcome() {
           } </div>
 
         {/* Image */}
-        <img src={grad} className="col-span-1 row-span-1 w-auto order-1 mask-x-from-75% mask-y-from-90% md:ml-4 md:row-span-2 md:max-h-[500px] md:max-w-[220px] lg:max-w-[345px] lg:ml-0 place-self-center"></img>
+        <img src={grad} className="col-span-1 row-span-1 w-auto order-1 mask-x-from-75% mask-y-from-90% md:ml-4 md:row-span-2 md:max-h-[500px] md:max-w-[220px] lg:max-w-[345px] lg:ml-0 place-self-center
+          lg:mask-x-from-100% lg:mask-y-from-100% lg:h-110
+          "></img>
       </div>
     </div>
   );
