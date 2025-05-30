@@ -1,6 +1,12 @@
-// TODO:
-// Each circle on click should change the styles of the site wide elements
-function ThemeChanger() {
+
+function ThemeChanger({ setThemeState }) {
+  // Setter function passed in as a prop used here for lifting state
+  function setTheme({ theme }) {
+    localStorage.setItem("data-theme", theme);
+    setThemeState(theme);
+    document.documentElement.setAttribute("data-theme", theme);
+  }
+
   return (
     <div className="card px-0 md:order-8 md:row-span-2 md:py-4 lg:row-span-1 lg:order-auto lg:col-start-4 lg:row-start-12">
       <div className="flex flex-row justify-around ">
@@ -13,11 +19,6 @@ function ThemeChanger() {
   );
 }
 
-function setTheme({ theme }) {
-  localStorage.setItem("data-theme", theme);
-
-  return document.documentElement.setAttribute("data-theme", theme);
-}
 
 
 export default ThemeChanger

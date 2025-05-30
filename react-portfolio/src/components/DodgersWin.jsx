@@ -36,12 +36,11 @@ const tmpGame = {
 }
 
 // FIX: Consider moving all this to Data.jsx
-// TODO: ADD Fade out on conditional tooltip unmount
 /*
  * DodgersWin component will async fetch dodgers latest game 
  * using the statsapi for MLB
  */
-function DodgersWin() {
+function DodgersWin({ theme }) {
   const [gameData, setGameData] = useState(tmpGame);
   const game = gameData?.games?.[0] ?? tmpGame;
 
@@ -103,10 +102,10 @@ function DodgersWin() {
           utcTime={game.gameDate}
           venue={game.venue.name}
         />
-
         <GameResultViewer
-          awayLogo={`/logos/${game.teams.away.team.abbreviation}.svg`}
-          homeLogo={`/logos/${game.teams.home.team.abbreviation}.svg`}
+
+          awayLogo={`/logos/${game.teams.away.team.abbreviation}${(game.teams.away.team.id == 119 && theme == 'dodgers') ? '-light' : ''}.svg`}
+          homeLogo={`/logos/${game.teams.home.team.abbreviation}${(game.teams.home.team.id == 119 && theme == 'dodgers') ? '-light' : ''}.svg`}
           homeScore={game.teams.home.score}
           awayScore={game.teams.away.score}
           // style check for Dodgers with team ID
@@ -182,11 +181,10 @@ function GameResultViewer({ homeScore, homeLogo, awayScore, awayLogo, dodgersHom
     false: "bg-neutral-700",
   }
   return (
-
     <div className="flex flex-col size-full">
       {/* Logo Container*/}
       <div className="flex flex-row justify-around items-center py-6 md:py-4 lg:py-4">
-        <img src={awayLogo} alt="Away Logo" className="size-24 md:size-20 lg:size-24  " />
+        <img src={awayLogo} alt="Away Logo" className="size-24 md:size-20 lg:size-24 " />
         <img src={homeLogo} alt="Home Logo" className="size-24 md:size-20 lg:size-24" />
       </div>
       {/* Box Score Container */}

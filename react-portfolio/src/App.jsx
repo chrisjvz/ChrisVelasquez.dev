@@ -10,7 +10,7 @@ import TechScrollable from './components/Techscrollable.jsx'
 import { projectData } from './components/Data'
 import DodgersWin from './components/DodgersWin.jsx'
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 function App() {
   /* Use local storage to persist chosen theme on reload or reopen*/
   useEffect(() => {
@@ -31,6 +31,7 @@ function App() {
  * */
 
 function Content() {
+  const [theme, setTheme] = useState(() => localStorage.getItem("data-theme") ?? 'base');
   return (
     <main className="grid overflow-hidden m-auto p-2 gap-4 top-0 md:grid-cols-4 md:grid-rows-24 lg:grid-rows-12 md:max-h-[1000px] md:max-w-[1400px]">
       <Welcome />
@@ -48,9 +49,10 @@ function Content() {
       }
 
       {/* <div className="card md:row-span-1 "> <h1 className='text-2xl text-center'> Work In Progress! </h1> </div> */}
-      <DodgersWin />
+      {console.log("state theme", theme)}
+      <DodgersWin theme={theme} />
       <TechScrollable />
-      <ThemeChanger />
+      <ThemeChanger setThemeState={setTheme} />
       <Credits />
     </main >
   )

@@ -19,6 +19,8 @@
 }
 
 @theme {
+  --breakpoint-lg: 82rem;
+
   --color-primary: var(--theme-primary-bg-color);
   --color-secondary: var(--theme-secondary-bg-color);
   --color-card-primary: var(--theme-primary-card-color);
