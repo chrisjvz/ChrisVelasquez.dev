@@ -208,7 +208,7 @@ function CouponConditions({ dodgerWin, venue, utcTime }) {
   // ex. may31st game day, june 1st current date will result in false
 
   const isNextDay = (nowDateInPSTParts[0].value === gameDateInPSTParts[0].value)
-    && (nowDateInPSTParts[2].value === ((parseInt(gameDateInPSTParts[2].value) + 1).toString()))
+    && (parseInt(nowDateInPSTParts[2].value) === ((parseInt(gameDateInPSTParts[2].value) + 1)))
   const atStadium = venue === "Dodger Stadium";
   const couponActive = isNextDay && atStadium && dodgerWin;
   return (
