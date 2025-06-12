@@ -14,7 +14,10 @@ while I'm at it* :sweat_smile:
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/amnesiacsloth/chrisvelasquez.dev?label=Issues)
 
   
-[Tools Used](#-tools-used) | [Deployment](#-deployment) | [Site Components](#-site-components) | [Restropective](#-retrospective)
+[Tools Used](#hammer_and_wrench-tools-used) | 
+[Deployment](#rocket-deployment) | 
+[Site Components](#part_alternation_mark-site-components) | 
+[Restropective](#thinking-retrospective)
 
 </div>
 
