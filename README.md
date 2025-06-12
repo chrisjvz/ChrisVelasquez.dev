@@ -13,7 +13,8 @@ while I'm at it* :sweat_smile:
 ![GitHub Tag](https://img.shields.io/github/v/tag/amnesiacsloth/chrisvelasquez.dev?label=Tag)
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/amnesiacsloth/chrisvelasquez.dev?label=Issues)
 
-[Tools Used](#tools-used) | [Deployment](#deployment) | [Site Components](#site-components) | [Restropective](#retrospective)
+  
+[Tools Used](#-tools-used) | [Deployment](#-deployment) | [Site Components](#-site-components) | [Restropective](#-retrospective)
 
 </div>
 
