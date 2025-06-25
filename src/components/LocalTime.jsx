@@ -30,7 +30,6 @@ const UTCopts = {
   __proto__: globalOpts,
 }
 
-// TODO: ADD functionality for real time updating
 function LocalTime() {
   const [index, setIndex] = useState(0);
   const [formattedTimes, setFormattedTimes] = useState([
