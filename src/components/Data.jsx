@@ -1,5 +1,5 @@
 const personalLinks = {
-  github: "https://github.com/AmnesiacSloth",
+  github: "https://github.com/chrisjvz",
   linkedin: "https://www.linkedin.com/in/chrisvelasquez-24/",
   youtube: "https://www.youtube.com/@aslothcodes",
   resume: Resume,
@@ -13,7 +13,7 @@ const personalLinks = {
 import LinkedinIcon from "../assets/svgs/linkedin-icon.svg?react"
 import GithubIcon from "../assets/svgs/github-icon.svg?react"
 import ResumeIcon from "../assets/svgs/resume-icon.svg?react"
-import Resume from "../assets/ChristianVelasquezResume-5-3-25.pdf"
+import Resume from "../assets/ChristianVelasquezEmbeddedResume.pdf"
 
 export const buttonIcons = [{
   id: 0,
@@ -40,11 +40,11 @@ import portfolioSiteImg from "../assets/portfoliosite.jpeg"
 
 const projectlinks = {
   smt32blesensor: "https://github.com/cse-190e-fall-2023/youlostit-project-1-blinkenlights-32-bit-monstas",
-  portfoliowebsite: "https://github.com/AmnesiacSloth/ChrisVelasquez.dev",
-  httpserver: "https://github.com/AmnesiacSloth/httpserver",
-  jccprocessor: "https://github.com/AmnesiacSloth/CPU-Design",
-  bingobongo: "https://github.com/AmnesiacSloth/BingoBongo",
-  dimes: "https://github.com/AmnesiacSloth/Dimes",
+  portfoliowebsite: "https://github.com/chrisjvz/ChrisVelasquez.dev",
+  httpserver: "https://github.com/chrisjvz/httpserver",
+  jccprocessor: "https://github.com/chrisjvz/CPU-Design",
+  bingobongo: "https://github.com/chrisjvz/BingoBongo",
+  dimes: "https://github.com/chrisjvz/Dimes",
 }
 
 export const projectData = [{
